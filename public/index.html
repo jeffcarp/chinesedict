@@ -1,0 +1,206 @@
+<!doctype html>
+<html ⚡>
+<head>
+  <title>ChineseDict2</title>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <script src="/main.js" type="module"></script>
+
+  <link rel="icon" type="image/png" href="/zhong.png" />
+  <link rel="apple-touch-icon" href="/zhong-bg.png" />
+
+  <!-- TODO
+  <link rel="canonical" href="">
+  -->
+  <style>
+    html, body {
+      font-family: Arial;
+      font-size: 16px;
+      margin: 0;
+      padding: 0;
+    }
+    .content {
+      margin: 0 auto;
+      max-width: 900px;
+    }
+    header {
+      background-color: #eee;
+    }
+    header h1 {
+      font-size: 1.2rem;
+      margin: 0;
+      padding: 8px;
+    }
+    header h1 a {
+      text-decoration: none;
+      color: #111;
+    }
+    header nav {
+      padding: 0;
+    }
+    header nav ul {
+      display: flex;
+      list-style: none;
+      padding: 0;
+    }
+    header nav ul li {
+      padding: 1rem;
+    }
+    input[name=q] {
+      box-sizing: border-box;
+      width: 100%;
+      font-size: 1.5rem;
+      padding: 0.75rem 0.5rem;;
+    }
+
+    .characters {
+      font-family: "Source Han Sans", "源ノ角ゴシック", "Hiragino Sans", "HiraKakuProN-W3", "Hiragino Kaku Gothic ProN W3", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "Noto Sans", "Noto Sans CJK JP", "メイリオ", Meiryo, "游ゴシック", YuGothic, "ＭＳ Ｐゴシック", "MS PGothic", "ＭＳ ゴシック", "MS Gothic", sans-serif;
+    }
+
+    .post {
+      display: flex;
+      flex-flow: row wrap;
+      align-content: flex-start;
+      background-color: #eee;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    .post .word {
+      border: solid 1px transparent;
+      padding: 0.25rem 0;
+      display: flex;
+    }
+    .post .word:hover {
+      background-color: #5ba8e9;
+      border: solid 1px #2e90e3;
+      cursor: pointer;
+    }
+    .word-page h1 {
+      color: #111;
+      font-size: 4rem;
+      margin: 0;
+      padding: 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table tr {
+      border: solid 1px #eee;
+    }
+    table tr:nth-child(even) {
+      background-color: #f7f7f7;
+    }
+    table td {
+      padding: 1rem;
+    }
+    .selector {
+      display: flex;
+    }
+    .selector a,
+    .selector span {
+      flex: 1;
+      text-decoration: none;
+      font-size: 0.8rem;
+      padding: 0.5rem;
+      background-color: #eee;
+    }
+    .selector a.selected {
+      background-color: salmon;
+      color: white;
+      font-weight: bold;
+    }
+    ul.word-list {
+      list-style: none;
+      margin: 0;
+      padding: 0.25em 0 0;
+    }
+    ul.word-list li {
+      margin: 0;
+      border-bottom: solid 1px #eee;
+    }
+
+    .word {
+      display: flex;
+      flex-direction: row;
+      padding: 1em 0;
+    }
+    .word .characters {
+      width: 30%;
+      font-size: 2em;
+    }
+    .word .characters.uncommon {
+      font-size: 1.25em;
+      color: #555;
+    }
+    .word .characters rt {
+      font-size: 12px;
+      padding-bottom: 0.25em;
+      color: #777;
+      font-family: Arial; /* TODO standardize */
+    }
+    .word .characters.uncommon rt {
+      font-size: 11px;
+    }
+    .word .definitions {
+      width: 60%;
+      color: #333;
+    }
+    .word .percentile-outer {
+      width: 10%;
+      text-align: right;
+      font-size: 0.75em;
+      color: #666;
+    }
+    .word ruby rt {
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <header>
+      <nav>
+        <h1><a href="/">ChineseDict2</a></h1>
+      </nav>
+
+      <form action="/" method="GET">
+        <input
+          type="text"
+          name="q"
+          id="query"
+          placeholder="Search for a word..."
+          autofocus />
+        </form>
+    </header>
+
+    <ul id="results" class="word-list">
+      <li>
+        <p><b>ChineseDict2</b> is a powerful Chinese-English dictionary.</p>
+
+        <p>Its main use case is looking up words quickly while chatting or watching a show.</p>
+
+        <p>To get started, enter any Chinese text or English word in the search box.</p>
+
+        <p><small style="color: #666;">Dictionary data is provided by the wonderful <a href="https://cc-cedict.org/wiki/">CC-EDICT</a>.</small></p>
+
+        <p><small style="color: #666;">Provide feedback <a href="https://github.com/jeffcarp/chinesedict/issues/new">here</a>.</p>
+      </li>
+    </ul>
+  </div>
+
+</body>
+
+<template id="search-result-li">
+  <li>
+      <div class="word">
+        <div class="characters"></div>
+        <div class="definitions"></div>
+        <div class="percentile-outer"><span class="percentile"></span></div>
+      </div>
+  </li>
+</template>
+
+</html>
