@@ -65,7 +65,20 @@ function searchDict(query) {
       return true
     }
   })
-  results.sort((a, b) => b.percentile - a.percentile)
+  results.sort((a, b) => {
+    // prioritizes exact matches
+    const aExact = a.searchablePinyin === query, bExact = b.searchablePinyin === query;
+    if (aExact && !bExact) return -1;
+    if (!aExact && bExact) return 1;
+
+    // If both are exact matches, prioritizes matches that contain the query string
+    const queryInA = a.searchablePinyin.includes(query), queryInB = b.searchablePinyin.includes(query);
+    if( queryInA && !queryInB) return -1;
+    else if (queryInB && !queryInA) return 1;
+
+    // otherwise, prioritize most used by percentile
+    return b.percentile - a.percentile;
+  })
 
   return results.slice(0, QUERY_LIMIT)
 }
