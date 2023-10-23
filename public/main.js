@@ -1,6 +1,7 @@
 const QUERY_LIMIT = 25
 let dictionary = []
 const DICT_FILEPATH = '/cedict_parsed.csv.gz'
+const definitionCache = {}
 
 async function main() {
   document.querySelector('input#query').addEventListener('input', search)
@@ -65,7 +66,44 @@ function searchDict(query) {
       return true
     }
   })
-  results.sort((a, b) => b.percentile - a.percentile)
+
+  function defExactMatch(queryString, entry) {
+    // checks if the split lower case defintions are in the cache and adds them if not
+    if (entry.simplified in definitionCache === false) {
+      definitionCache[entry.simplified] = entry.definition.toLowerCase().split('\n')
+    }
+  
+    // loops through the definitions in cache and returns true if there is an exact match
+    for (const definition of definitionCache[entry.simplified]){
+      if (definition === queryString) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  function defPartialMatch(queryString, entry) {
+    // checks definitions to see if it includes string. All entries should be in cache
+    // by this point and do not need to be checked
+    return definitionCache[entry.simplified].includes(queryString)
+  }
+
+  results.sort((a, b) => {
+    // prioritizes exact matches
+    const aExact = a.searchablePinyin === finalQuery || defExactMatch(finalQuery, a)
+    const bExact = b.searchablePinyin === finalQuery || defExactMatch(finalQuery, b)
+    if (aExact && !bExact) return -1;
+    if (!aExact && bExact) return 1;
+
+    // If both are exact matches, prioritizes matches that contain the query string
+    const queryInA = a.searchablePinyin.includes(finalQuery) || defPartialMatch(finalQuery, a);
+    const queryInB = b.searchablePinyin.includes(finalQuery) || defPartialMatch(finalQuery, b);
+    if (queryInA && !queryInB) return -1;
+    else if (queryInB && !queryInA) return 1;
+
+    // otherwise, prioritize most used by percentile
+    return b.percentile - a.percentile;
+  })
 
   return results.slice(0, QUERY_LIMIT)
 }
