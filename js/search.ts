@@ -13,16 +13,16 @@ const TRIE: Trie = {
   "迎": [],
   "迟": ["到"],
   "到": [],
-}
+};
 
 // Returns a list of the biggest words found in the input string.
 export function splitWords(input: string): string[] {
   // For each character, follow the trie until the end, then generate word.
   let finalWords: string[] = [];
   let curWord = "";
-  input.split('').forEach(character => {
+  input.split("").forEach((character) => {
     if (curWord.length === 0) {
-      curWord += character
+      curWord += character;
     } else {
       const lastChar = curWord.charAt(curWord.length - 1);
       if (!(lastChar in TRIE)) {
@@ -34,7 +34,7 @@ export function splitWords(input: string): string[] {
         curWord = character;
       }
     }
-  })
+  });
 
   if (curWord) {
     finalWords.push(curWord);

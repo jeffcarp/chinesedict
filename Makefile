@@ -22,3 +22,7 @@ test:
 
 test_watch:
 	deno test --watch
+
+push:
+	deno fmt --check
+	git push
