@@ -1,0 +1,26 @@
+name: test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    name: Test Runner
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Download Deno
+        uses: denolib/setup-deno@master
+        with:
+          deno-version: v1.38.3
+
+      - name: Check format
+        run: deno fmt --check
+
+      - name: Run tests
+        run: deno test --allow-read --allow-write

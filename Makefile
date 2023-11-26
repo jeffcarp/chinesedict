@@ -16,3 +16,6 @@ generate_dict:
 	gzip -c ./data/cedict_parsed.csv > ./public/cedict_parsed.csv.gz
 	echo "Gzipped final file size:"
 	du ./public/cedict_parsed.csv.gz
+
+test:
+	deno test
