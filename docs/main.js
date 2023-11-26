@@ -1,6 +1,6 @@
 const QUERY_LIMIT = 25
 let dictionary = []
-const DICT_FILEPATH = '/chinesedict/cedict_parsed.csv.gz'
+const DICT_FILEPATH = '/cedict_parsed.csv.gz'
 const definitionCache = {}
 
 async function main() {
