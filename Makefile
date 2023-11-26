@@ -1,5 +1,5 @@
 serve:
-	python3 -m http.server -d docs/ 8080
+	python3 -m http.server -d public/ 8080
 
 deploy:
 	firebase deploy --project chinesedict2
@@ -13,6 +13,6 @@ generate_dict:
 	python3 generate_dict.py
 	echo "Final file size:"
 	du ./data/cedict_parsed.csv
-	gzip -c ./data/cedict_parsed.csv > ./docs/cedict_parsed.csv.gz
+	gzip -c ./data/cedict_parsed.csv > ./public/cedict_parsed.csv.gz
 	echo "Gzipped final file size:"
-	du ./docs/cedict_parsed.csv.gz
+	du ./public/cedict_parsed.csv.gz
