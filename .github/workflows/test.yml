@@ -5,7 +5,7 @@ on:
   pull_request:
 
 jobs:
-  build:
+  unit_tests:
     name: Test Runner
 
     runs-on: ubuntu-latest
@@ -24,3 +24,26 @@ jobs:
 
       - name: Run tests
         run: deno test --allow-read --allow-write
+
+  lighthouse:
+    name: lighthouse
+    runs-on: ubuntu-latest
+
+    env:
+      URL: ${{ github.event.deployment_status.environment_url }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+
+      - name: Install Lighthouse CI
+        run: npm install -g @lhci/cli@0.9.x
+
+      - name: Run Lighthouse
+        run: lhci autorun --collect.staticDistDir="public" --upload.target="temporary-public-storage"
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
