@@ -19,3 +19,6 @@ generate_dict:
 
 test:
 	deno test
+
+test_watch:
+	deno test --watch

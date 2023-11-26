@@ -7,3 +7,10 @@ Deno.test("Single word", () => {
     ["迟到"],
   );
 });
+
+Deno.test("Two words simple", () => {
+  assertEquals(
+    splitWords("你好欢迎"),
+    ["你好", "欢迎"],
+  );
+});
