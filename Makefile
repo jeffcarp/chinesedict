@@ -21,7 +21,7 @@ test:
 	deno test
 
 test_watch:
-	deno test --watch
+	deno test --watch --allow-read
 
 push:
 	deno fmt --check
