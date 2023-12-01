@@ -104,6 +104,7 @@ export function entriesForKeyword(
 ): Entry[] {
   const finalQuery = keyword.trim().toLowerCase();
 
+  // TODO: Replace this with <O(n) search.
   return dictionary.entries.filter((entry) => {
       return entry.searchablePinyin === finalQuery;
   }).slice(0, limit);
