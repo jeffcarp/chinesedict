@@ -18,7 +18,7 @@ generate_dict:
 	du ./public/cedict_parsed.csv.gz
 
 test:
-	deno test
+	deno test --allow-read
 
 test_watch:
 	deno test --watch --allow-read
@@ -26,3 +26,10 @@ test_watch:
 push:
 	deno fmt --check
 	git push
+
+TSC_ARGS=js/dictionary.ts --outDir public/js/ --lib es2023 --module es2022
+build_js:
+	tsc $(TSC_ARGS)
+
+build_js_watch:
+	tsc -w $(TSC_ARGS)

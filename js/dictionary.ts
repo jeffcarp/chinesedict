@@ -25,7 +25,9 @@ export class Dictionary {
     this.entries.forEach(entry => {
         let triePointer = trie;
         entry.simplified.split("").forEach(character => {
-          if (!triePointer.hasOwnProperty(character)) {
+					if (!isChineseChar(character)) {
+						return;
+					} else if (!triePointer.hasOwnProperty(character)) {
             triePointer[character] = {};
           }
           triePointer = triePointer[character];
@@ -95,10 +97,10 @@ export function processRawTextToDict(rawText: string): Entry[] {
     if (pinyin) {
       pinyinParts = pinyin.split("_");
     } else {
-      console.log("No pinyin for row:", row, i);
+      // console.log("No pinyin for row:", row, i);
     }
     if (!definition) {
-      console.log("No def for row:", row, i);
+      // console.log("No def for row:", row, i);
       definition = "";
     }
     const searchablePinyin = pinyinParts.join("").normalize("NFD").replace(
@@ -114,4 +116,8 @@ export function processRawTextToDict(rawText: string): Entry[] {
     };
     return entry;
   });
+}
+
+export function isChineseChar(character: string): boolean {
+	return /^[\u3400-\u4dbf|\u4e00-\u9fef]+$/.test(character);
 }

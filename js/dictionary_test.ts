@@ -4,6 +4,7 @@ import {
   Dictionary,
   Entry,
   processRawTextToDict,
+  isChineseChar,
 } from "./dictionary.ts";
 
 
@@ -44,6 +45,8 @@ Deno.test("segmentText", async (t) => {
       // Long sentence.
       "你今天": ["你", "今天"],
       "你好，你今天过得怎么样": ["你好", "，", "你", "今天", "过得", "怎么样"],
+      // Don't segment non-Chinese characters.
+      "mmm": ["mmm"],
   };
 
   for (const fixture of Object.keys(fixtures)) {
@@ -56,3 +59,16 @@ Deno.test("segmentText", async (t) => {
 
 });
 
+Deno.test("isChineseChar", (t) => {
+  const fixtures: { [key: string]: boolean } = {
+      "a": false,
+      "asdf": false,
+      "你": true,
+      "班门弄斧": true,
+      "班门asdf弄斧": false,
+  };
+
+  for (const fixture of Object.keys(fixtures)) {
+    assertEquals(isChineseChar(fixture), fixtures[fixture]);
+  }
+});

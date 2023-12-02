@@ -1,7 +1,11 @@
+import { Dictionary } from "/js/dictionary.js";
+
 const QUERY_LIMIT = 25;
-let dictionary = [];
+let legacyDictionary = [];
 const DICT_FILEPATH = "/cedict_parsed.csv.gz";
 const definitionCache = {};
+let dict;
+let curSegment = 0;
 
 async function main() {
   document.querySelector("input#query").addEventListener("input", search);
@@ -16,7 +20,8 @@ async function main() {
     document.querySelector("input#query").value = query;
   }
 
-  dictionary = await fetchDictionary();
+  legacyDictionary = await fetchDictionary();
+  dict = new Dictionary(legacyDictionary);
 
   if (query) {
     search();
@@ -37,11 +42,12 @@ async function fetchDictionary() {
     if (pinyin) {
       pinyin = pinyin.split("_");
     } else {
-      console.log("No pinyin for row:", row, i);
+      // TODO: This should be done in preprocessing.
+      // console.log("No pinyin for row:", row, i);
       pinyin = [];
     }
     if (!definition) {
-      console.log("No def for row:", row, i);
+      // console.log("No def for row:", row, i);
       definition = "";
     }
     const searchablePinyin = pinyin.join("").normalize("NFD").replace(
@@ -62,7 +68,7 @@ async function fetchDictionary() {
 function searchDict(query) {
   const finalQuery = query.trim().toLowerCase();
 
-  const results = dictionary.filter((entry) => {
+  const results = legacyDictionary.filter((entry) => {
     if (
       entry.simplified && entry.simplified.toLowerCase().includes(finalQuery)
     ) {
@@ -125,7 +131,18 @@ function searchDict(query) {
 
 function search() {
   const query = document.querySelector("input#query").value;
-  const results = searchDict(query);
+
+  // Segment before querying; use the first segment initially.
+  const segments = updateSegments(query);
+  if (segments.length == 0) {
+    return;
+  }
+  if (curSegment >= segments.length) {
+    curSegment = 0;
+  }
+  const keyword = segments[curSegment];
+
+  const results = searchDict(keyword);
   document.querySelector("#results").innerHTML = "";
   const resultTemplate = document.querySelector("#search-result-li");
   results.forEach((result) => {
@@ -161,4 +178,40 @@ function search() {
   });
 }
 
-main();
+function updateSegments(query) {
+  if (!dict) {
+    return;
+  }
+
+  const segments = dict.segmentText(query);
+
+  window.segments.innerHTML = "";
+
+  if (segments.length <= 1) {
+    return segments;
+  }
+
+  const wordTemplate = document.querySelector("#word-segment");
+  segments.forEach((segment, index) => {
+    const node = wordTemplate.content.cloneNode(true);
+    node.querySelector('.segment').innerText = segment;
+    window.segments.appendChild(node);
+
+    const realNode = window.segments.children[index];
+    if (index === curSegment) {
+      realNode.style.borderBottom = 'solid 2px #E84A5F';
+    }
+
+    const makeChangeSegmentCallback = (index) => {
+      return () => {
+        curSegment = index;
+        search();
+      };
+    };
+    realNode.addEventListener('click', makeChangeSegmentCallback(index));
+  })
+
+  return segments;
+}
+
+window.onload = main;

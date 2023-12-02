@@ -1,12 +1,12 @@
 <!doctype html>
-<html ⚡>
+<html>
 <head>
   <title>ChineseDict2</title>
 
   <meta charset="utf-8">
 
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-  <script src="/main.js" type="module"></script>
+  <script async src="/main.js" type="module"></script>
 
   <link rel="icon" type="image/png" href="/zhong.png" />
   <link rel="apple-touch-icon" href="/zhong-bg.png" />
@@ -26,12 +26,11 @@
       max-width: 900px;
     }
     header {
-      background-color: #eee;
     }
     header h1 {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       margin: 0;
-      padding: 8px;
+      padding: 8px 0;
     }
     header h1 a {
       text-decoration: none;
@@ -157,10 +156,24 @@
     .word ruby rt {
       user-select: none;
     }
+    #segments {
+      padding: 16px;
+    }
+    .segment {
+      display: inline-block;
+      background-color: #eee;
+      padding: 8px;
+      border-radius: 4px;
+      margin: 0 0 8px 0;
+    }
+    .segment:hover {
+      cursor: pointer;
+      background-color: #ddd;
+    }
   </style>
 </head>
 <body>
-  <div class="content">
+  <div class="content" id="app">
     <header>
       <nav>
         <h1><a href="/">ChineseDict2</a></h1>
@@ -174,6 +187,9 @@
           placeholder="Search for a word..."
           autofocus />
         </form>
+
+        <div id="segments">
+        </div>
     </header>
 
     <ul id="results" class="word-list">
@@ -205,6 +221,10 @@
         <div class="percentile-outer"><span class="percentile"></span></div>
       </div>
   </li>
+</template>
+
+<template id="word-segment">
+  <span class="segment"></span>
 </template>
 
 <!-- Google tag (gtag.js) -->
