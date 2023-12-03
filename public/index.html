@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-  <title>ChineseDict2</title>
+  <title>ChineseDict</title>
 
   <meta charset="utf-8">
 
@@ -116,7 +116,7 @@
       margin: 0;
       padding: 0.25em 0 0;
     }
-    ul.word-list li {
+    ul.word-list > li {
       margin: 0;
       border-bottom: solid 1px #eee;
     }
@@ -170,13 +170,21 @@
       cursor: pointer;
       background-color: #ddd;
     }
+    footer {
+      margin-top: 4em;
+      padding-top: 4em;
+      line-height: 1.25rem;
+      border-top: solid 1px #;
+      font-size: 0.75rem;
+      color: #888;
+    }
   </style>
 </head>
 <body>
   <div class="content" id="app">
     <header>
       <nav>
-        <h1><a href="/">ChineseDict2</a></h1>
+        <h1><a href="/">ChineseDict</a></h1>
       </nav>
 
       <form action="/" method="GET">
@@ -193,24 +201,30 @@
     </header>
 
     <ul id="results" class="word-list">
-      <li>
-        <p><b>ChineseDict2</b> is a fast Chinese-English dictionary.</p>
-
-        <p>Its main use case is looking up words quickly while chatting or watching a show.</p>
+      <li style="border-bottom: none; font-size: 1.2rem;">
+        <p><b>ChineseDict</b> is a fast Chinese-English dictionary.</p>
 
         <p>To get started, enter any Chinese text or English word in the search box.</p>
 
-        <p>
-          <small style="color: #666;">
-            Dictionary data is provided by the wonderful <a href="https://cc-cedict.org/wiki/">CC-EDICT</a>.<br/>
+        <p>Examples:</p>
 
-            Provide feedback <a href="https://github.com/jeffcarp/chinesedict/issues/new">here</a>.
-          </small>
-        </p>
+        <ul>
+          <li>A word: <a href="/?q=小狗">小狗</a></li>
+          <li>English words: <a href="/?q=news">news</a></li>
+          <li>Multiple Chinese words to segment: <a href="/?q=我们正在吃饭">我们正在吃饭</a></li>
+        </ul>
+
       </li>
     </ul>
-  </div>
 
+    <footer>
+      Dictionary data is provided by the wonderful <a href="https://cc-cedict.org/wiki/">CC-EDICT</a>.<br/>
+
+      Provide feedback <a href="https://github.com/jeffcarp/chinesedict/issues/new">here</a>.<br/>
+
+      Currently only <a href="https://github.com/jeffcarp/chinesedict/issues/1">simplified characters</a> are supported.
+    </footer>
+  </div>
 </body>
 
 <template id="search-result-li">
