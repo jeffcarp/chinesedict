@@ -6,7 +6,6 @@
   <meta charset="utf-8">
 
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-  <script async src="/main.js" type="module"></script>
 
   <link rel="icon" type="image/png" href="/zhong.png" />
   <link rel="apple-touch-icon" href="/zhong-bg.png" />
@@ -216,6 +215,14 @@
 
       </li>
     </ul>
+    <script>
+      // TEMPORARY TERRIBLE HACK
+      const queryParams = new URLSearchParams(window.location.search);
+      const query = queryParams.get("q");
+      if (query) {
+        document.querySelector('.word-list').innerText = 'Loading...';
+      }
+    </script>
 
     <footer>
       Dictionary data is provided by the wonderful <a href="https://cc-cedict.org/wiki/">CC-EDICT</a>.<br/>
@@ -241,7 +248,6 @@
   <span class="segment"></span>
 </template>
 
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VF4JJW0F68"></script>
 <script>
   if (!window.location.origin.includes('localhost')) {
@@ -252,4 +258,5 @@
   }
 </script>
 
+<script src="/main.js" type="module"></script>
 </html>

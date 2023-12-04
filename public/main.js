@@ -214,4 +214,4 @@ function updateSegments(query) {
   return segments;
 }
 
-window.onload = main;
+main();
