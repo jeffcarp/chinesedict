@@ -19,6 +19,24 @@
       font-size: 16px;
       margin: 0;
       padding: 0;
+      color: #111;
+    }
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #222;
+        color: white;
+      }
+      a {
+        color: white;
+      }
+      header h1 a {
+        color: white;
+      }
+    }
+    @media (prefers-color-scheme: light) {
+      header h1 a {
+        color: #111;
+      }
     }
     .content {
       margin: 0 auto;
@@ -33,7 +51,6 @@
     }
     header h1 a {
       text-decoration: none;
-      color: #111;
     }
     header nav {
       padding: 0;
@@ -76,7 +93,6 @@
       cursor: pointer;
     }
     .word-page h1 {
-      color: #111;
       font-size: 4rem;
       margin: 0;
       padding: 0;
@@ -144,13 +160,12 @@
     }
     .word .definitions {
       width: 60%;
-      color: #333;
     }
     .word .percentile-outer {
       width: 10%;
       text-align: right;
       font-size: 0.75em;
-      color: #666;
+      color: #888;
     }
     .word ruby rt {
       user-select: none;
