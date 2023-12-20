@@ -4,11 +4,6 @@ serve:
 deploy:
 	firebase deploy --project chinesedict2
 
-# Via: https://www.mdbg.net/chinese/dictionary?page=cc-cedict
-download_latest_dict:
-	curl -O https://www.mdbg.net/chinese/export/cedict/cedict_1_0_ts_utf-8_mdbg.txt.gz
-	gunzip cedict_1_0_ts_utf-8_mdbg.txt.gz
-
 generate_dict:
 	python3 generate_dict.py
 	echo "Final file size:"
@@ -33,3 +28,28 @@ build_js:
 
 build_js_watch:
 	tsc -w $(TSC_ARGS)
+
+# TODO: Merge below with above.
+
+update:
+	python3 update.py
+	find release -exec wc -c {} +
+
+serve_watch:
+	gow -e=go,mod,html,css,textproto run server/*.go
+
+serve_nowatch:
+	go run server/*.go
+
+proto:
+	protoc --python_out=scripts/. --go_out=server/. \
+		--go_opt=paths=source_relative \
+		dictionary.proto
+
+deploy_go:
+	gcloud app deploy ./server/app.yaml --project=zhongwenfyi
+
+# Via: https://www.mdbg.net/chinese/dictionary?page=cc-cedict
+download_latest_dict:
+	curl https://www.mdbg.net/chinese/export/cedict/cedict_1_0_ts_utf-8_mdbg.txt.gz > ./data/cedict_1_0_ts_utf-8_mdbg.txt.gz
+	gunzip ./data/cedict_1_0_ts_utf-8_mdbg.txt.gz

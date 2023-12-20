@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+  <title>{{ .Subtitle }} Zhongwen.fyi</title>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+  <link rel="icon" type="image/png" href="/zhong.png" />
+  <link rel="apple-touch-icon" href="/zhong-bg.png" />
+
+  <style>
+  {{ template "main.css" }}
+  </style>
+  <!-- TODO
+  <link rel="canonical" href="">
+  -->
+  </style>
+</head>
+<body>
+  <div class="content" id="app">
+    <header>
+      <nav>
+        <h1><a href="/">Zhongwen.fyi 中文</a></h1>
+        <span><a href="/random">Random</a></span>
+        <span><a href="/about">About</a></span>
+      </nav>
+
+      <form action="/results" method="GET">
+        <input
+          type="text"
+          name="q"
+          id="query"
+          placeholder="Search for a word..."
+          autofocus />
+        </form>
+
+        <div id="segments">
+        </div>
+    </header>

@@ -14,8 +14,9 @@ make serve
 
 ## Acknowledgements
 
-- Dictionary data wholly from the [CC-CEDICT](https://cc-cedict.org/) project.
+- Dictionary data from the [CC-CEDICT](https://cc-cedict.org/) project.
 - Style inspiration from [jisho.org](https://jisho.org).
+- Chengyu from: https://github.com/chujiezheng/ChID-Dataset/
 
 ## Learning Resources
 

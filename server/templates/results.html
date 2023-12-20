@@ -1,0 +1,28 @@
+{{template "header.html" .HeaderData}}
+
+<h1>Query: {{ .Query }}</h1>
+
+Results: {{ len .Entries }}
+
+<hr />
+
+{{ if not .Entries }}
+<div>
+  Search for {{ .Query }} on
+  <a href="https://en.wiktionary.org/w/index.php?search={{ .Query }}">Wiktionary</a>,
+  <a href="https://en.wikipedia.org/wiki/Special:Search?search={{ .Query }}">Wikipedia</a>
+</div>
+{{ end }}
+
+<ul class="word-list">
+{{range .Entries }}
+  <li>
+    <h3><b><a href="/word/{{.Traditional}}">{{.Traditional}}</a></b></h3>
+    <div><small>{{ .Pinyin }}</small></div>
+    <div>{{ range .Definitions }} {{ . }} / {{ end }}</div>
+    <div><small>{{.Tags}}</small></div>
+  </li>
+{{end}}
+</ul>
+
+{{template "footer.html"}}

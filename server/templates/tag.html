@@ -1,0 +1,18 @@
+{{template "header.html" .HeaderData}}
+
+<h1>Tag: {{ .TagName }}</h1>
+
+Entries: {{ len .Entries }}
+
+<ul class="word-list">
+{{range .Entries }}
+  <li>
+    <h3><b><a href="/word/{{.Traditional}}">{{.Traditional}}</a></b></h3>
+    <div><small>{{ .Pinyin }}</small></div>
+    <div>{{ range .Definitions }} {{ . }} / {{ end }}</div>
+    <div><small>{{.Tags}}</small></div>
+  </li>
+{{end}}
+</ul>
+
+{{template "footer.html"}}

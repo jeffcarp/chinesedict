@@ -1,0 +1,223 @@
+html, body {
+  font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  color: #111;
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #222;
+    color: white;
+  }
+  a {
+    color: white;
+  }
+  header h1 a {
+    color: white;
+  }
+}
+@media (prefers-color-scheme: light) {
+  header h1 a {
+    color: #111;
+  }
+}
+.content {
+  margin: 0 auto;
+  max-width: 900px;
+}
+header {
+}
+header h1 {
+  font-size: 1.3rem;
+  margin: 0;
+  padding: 8px 0;
+  display: inline-block;
+}
+header h1 a {
+  text-decoration: none;
+}
+header nav {
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+header nav ul {
+  list-style: none;
+  padding: 0;
+}
+header nav ul li {
+}
+input[name=q] {
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 1.5rem;
+  padding: 0.75rem 0.5rem;;
+}
+
+.characters {
+  font-family: "Source Han Sans", "源ノ角ゴシック", "Hiragino Sans", "HiraKakuProN-W3", "Hiragino Kaku Gothic ProN W3", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "Noto Sans", "Noto Sans CJK JP", "メイリオ", Meiryo, "游ゴシック", YuGothic, "ＭＳ Ｐゴシック", "MS PGothic", "ＭＳ ゴシック", "MS Gothic", sans-serif;
+}
+
+.post {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+  background-color: #eee;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+.post .word {
+  border: solid 1px transparent;
+  padding: 0.25rem 0;
+  display: flex;
+}
+.post .word:hover {
+  background-color: #5ba8e9;
+  border: solid 1px #2e90e3;
+  cursor: pointer;
+}
+.word-page h1 {
+  margin: 0;
+  padding: 0;
+}
+.word-page h1 a {
+  color: #2b142c;
+}
+@media (prefers-color-scheme: dark) {
+    .word-page h1 a {
+      color: white;
+    }
+}
+.word-page h1 span {
+  font-size: 4rem;
+}
+.word-page h1 span a {
+  text-decoration: none;
+}
+.word-page h1 rt {
+  font-size: 0.6em;
+  font-weight: 200;
+  user-select: none;
+}
+
+section {
+  padding: 0 0 1em;
+  margin: 0 0 1em;
+  border-bottom: solid 1px #ccc;
+}
+
+.word-info {
+  display: flex;
+}
+
+.word-info .column {
+  flex: 1;
+}
+
+.definition {
+  font-size: 1.5em;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+table tr {
+  border: solid 1px #eee;
+}
+table tr:nth-child(even) {
+  background-color: #f7f7f7;
+}
+table td {
+  padding: 1rem;
+}
+.selector {
+  display: flex;
+}
+.selector a,
+.selector span {
+  flex: 1;
+  text-decoration: none;
+  font-size: 0.8rem;
+  padding: 0.5rem;
+  background-color: #eee;
+}
+.selector a.selected {
+  background-color: salmon;
+  color: white;
+  font-weight: bold;
+}
+ul.word-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.25em 0 0;
+}
+ul.word-list > li {
+  margin: 0;
+  padding: 1em 0;
+  border-bottom: solid 1px #eee;
+}
+ul.word-list h3 {
+
+}
+
+.word {
+  display: flex;
+  flex-direction: row;
+  padding: 1em 0;
+}
+.word .characters {
+  width: 30%;
+  font-size: 2em;
+}
+.word .characters.uncommon {
+  font-size: 1.25em;
+  color: #555;
+}
+.word .characters rt {
+  font-size: 12px;
+  padding-bottom: 0.25em;
+  color: #777;
+  font-family: Arial; /* TODO standardize */
+}
+.word .characters.uncommon rt {
+  font-size: 11px;
+}
+.word .definitions {
+  width: 60%;
+}
+.word .percentile-outer {
+  width: 10%;
+  text-align: right;
+  font-size: 0.75em;
+  color: #888;
+}
+.word ruby rt {
+  user-select: none;
+}
+#segments {
+  padding: 16px;
+}
+.segment {
+  display: inline-block;
+  background-color: #eee;
+  padding: 8px;
+  border-radius: 4px;
+  margin: 0 0 8px 0;
+}
+.segment:hover {
+  cursor: pointer;
+  background-color: #ddd;
+}
+footer {
+  margin-top: 8em;
+  padding-top: 8em;
+  line-height: 1.25rem;
+  border-top: solid 1px rgba(255, 255, 255, 0.5);
+  font-size: 0.75rem;
+  color: #888;
+}
