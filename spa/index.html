@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+  <title>Chinese Reader</title>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+  <link rel="icon" type="image/png" href="/zhong.png" />
+  <link rel="apple-touch-icon" href="/zhong-bg.png" />
+
+  <!-- TODO
+  <link rel="canonical" href="">
+  -->
+  <link rel="stylesheet" href="/main.css">
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="/main.js" type="module"></script>
+</head>
+<body>
+  <div class="content" id="app">
+    <!-- TODO: have a page if dict not downloaded -->
+    <div class="column-left">
+      <h2></h2>
+      <form>
+        <input
+            type="text"
+            name="q"
+            placeholder="Paste a block of text or choose a source material below"
+            v-model="query"
+         />
+      </form>
+      {{ query}}
+      <div v-if="curArticle">
+        <h2>curArticle: {{ curArticle.title }}</h2>
+        <div class="post">
+          <span
+            v-for="word in curArticleWords"
+            class="word"
+            v-on:click="curSidebarWord = word">
+            {{ word }}
+          </span>
+        </div>
+      </div>
+      <ol>
+        <li v-for="article in articles"
+            v-on:click="curArticle = article">
+          {{ article.title }} - difficulty: {{ article.difficulty }}
+        </li>
+      </ol>
+    </div>
+    <div class="column-right">
+      <div>{{ message }}</div>
+      <h3>{{ curSidebarWord }}</h3>
+      <div v-for="def in curDefinition" style="margin 0 0 1em;">
+        <div>{{ def.pinyin.join('') }}</div>
+        <div>{{ def.definition }}</div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VF4JJW0F68"></script>
+<script>
+  if (!window.location.origin.includes('localhost')) {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JGWNGNWF35');
+  }
+</script>
+
+</html>
