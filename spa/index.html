@@ -55,12 +55,10 @@
 
     </div>
     <div class="column-right">
-      <div>{{ message }}</div>
-
       <div v-if="selectedWord" class="definition">
         <h3>{{ selectedWord }}</h3>
-        <div v-for="def in curDefinition" style="margin 0 0 1em;">
-          <div>{{ def.pinyin.join('') }}</div>
+        <div v-for="def in curDefinition" style="margin 0 0 1em;" class="definition">
+          <div><small>{{ def.pinyin.join('') }}</small></div>
           <div>{{ def.definition }}</div>
         </div>
       </div>
