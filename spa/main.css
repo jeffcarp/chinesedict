@@ -71,85 +71,30 @@ input[name=q] {
   font-family: "Source Han Sans", "源ノ角ゴシック", "Hiragino Sans", "HiraKakuProN-W3", "Hiragino Kaku Gothic ProN W3", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "Noto Sans", "Noto Sans CJK JP", "メイリオ", Meiryo, "游ゴシック", YuGothic, "ＭＳ Ｐゴシック", "MS PGothic", "ＭＳ ゴシック", "MS Gothic", sans-serif;
 }
 
-.post {
+article {
+  padding: 0 1em;
 }
-.post .word {
+.word {
   font-size: 18px;
   display: inline-block;
   padding: 2px;
   margin: 0 0.25em 0 0;
   border-bottom: solid 1px rgba(255, 255, 255, 0.1);
 }
-.post .word:hover {
+.word:hover {
   background-color: #5ba8e9;
   border-bottom: solid 1px #2e90e3;
   cursor: pointer;
 }
-
-
-.word-page h1 {
-  font-size: 4rem;
-  margin: 0;
-  padding: 0;
-}
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-table tr {
-  border: solid 1px #eee;
-}
-table tr:nth-child(even) {
-  background-color: #f7f7f7;
-}
-table td {
-  padding: 1rem;
-}
-.selector {
-  display: flex;
-}
-.selector a,
-.selector span {
-  flex: 1;
-  text-decoration: none;
-  font-size: 0.8rem;
-  padding: 0.5rem;
-  background-color: #eee;
-}
-.selector a.selected {
-  background-color: salmon;
-  color: white;
-  font-weight: bold;
-}
-ul.word-list {
-  list-style: none;
-  margin: 0;
-  padding: 0.25em 0 0;
-}
-ul.word-list > li {
-  margin: 0;
-  border-bottom: solid 1px #eee;
+.word.selected {
+  background-color: #5ba8e9;
+  border-bottom: solid 1px red;
 }
 
-#segments {
-  padding: 16px;
+
+.definition {
+  padding: 0 1em;
 }
-.segment {
-  display: inline-block;
-  background-color: #eee;
-  padding: 8px;
-  border-radius: 4px;
-  margin: 0 0 8px 0;
-}
-.segment:hover {
-  cursor: pointer;
-  background-color: #ddd;
-}
-footer {
-  margin-top: 4em;
-  padding-top: 4em;
-  line-height: 1.25rem;
-  border-top: solid 1px #;
-  font-size: 0.75rem;
-  color: #888;
+.definition h3 {
+  font-size: 3rem;
 }

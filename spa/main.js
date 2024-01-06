@@ -23,11 +23,13 @@ const articles = [
     }
 ]
 
+
+
 createApp({
 	setup() {
 		const message = ref('Hello vue!')
 		const curArticle = ref(null)
-		const curSidebarWord = ref(null)
+		const selectedIndex = ref(null)
 		const query = ref('')
 
     const curArticleWords = computed(() => {
@@ -38,25 +40,66 @@ createApp({
       }
     })
 
-    const curDefinition = computed(() => {
-      if (!curSidebarWord.value) {
+    const selectedWord = computed(() => {
+      if (selectedIndex.value === null) {
+        return null
+      } else if (curArticle.value === null) {
         return null
       } else {
-        return searchDict(curSidebarWord.value)
+        return curArticleWords.value.at(selectedIndex.value)
       }
     })
 
+    const curDefinition = computed(() => {
+      if (selectedIndex.value === null) {
+        return null
+      } else if (curArticle.value === null) {
+        return null
+      } else {
+        return searchDict(selectedWord.value).slice(0, 5) // DEBUGGING UI
+      }
+    })
+
+    function querySubmit() {
+        curArticle.value = {
+          title: 'custom article',
+          text: query.value,
+        }
+    }
+
+    document.addEventListener("keydown", (event) => {
+      if (!(event.isComposing || event.keyCode === 37 || event.keyCode === 39)) {
+        return;
+      } else if (curArticle.value === null) {
+        return;
+      } else if (selectedWord.value === null) {
+        return;
+      }
+
+      if (event.keyCode === 37 && selectedIndex.value > 0) {
+        selectedIndex.value -= 1;
+      } else if (event.keyCode === 39 && selectedIndex.value < curArticleWords.value.length - 1) {
+        selectedIndex.value += 1;
+      }
+    });
+
 		return {
+      querySubmit,
 			curArticle,
       curArticleWords,
 			message,
 			query,
 			articles,
-      curSidebarWord,
+      selectedIndex,
+      selectedWord,
       curDefinition,
 		}
 	}
 }).mount('#app')
+
+
+
+
 
 async function main() {
   legacyDictionary = await fetchDictionary();
@@ -163,91 +206,6 @@ function searchDict(query) {
   });
 
   return results.slice(0, QUERY_LIMIT);
-}
-
-function search() {
-  const query = document.querySelector("input#query").value;
-
-  // Segment before querying; use the first segment initially.
-  const segments = updateSegments(query);
-  if (segments.length == 0) {
-    return;
-  }
-  if (curSegment >= segments.length) {
-    curSegment = 0;
-  }
-  const keyword = segments[curSegment];
-
-  const results = searchDict(keyword);
-  document.querySelector("#results").innerHTML = "";
-  const resultTemplate = document.querySelector("#search-result-li");
-  results.forEach((result) => {
-    const node = resultTemplate.content.cloneNode(true);
-    //node.querySelector('.simplified').innerText = result.simplified
-    //node.querySelector('.pinyin').innerText = result.pinyin.join(' ')
-    let commonClass = "common";
-    if (result.percentile == 0) {
-      commonClass = "uncommon";
-    }
-
-    const rubyEl = document.createElement("ruby");
-    result.simplified.split("").forEach((character, i) => {
-      const charEl = document.createElement("span");
-      charEl.innerText = character;
-      rubyEl.appendChild(charEl);
-
-      const rtEl = document.createElement("rt");
-      rtEl.innerText = result.pinyin[i];
-      rubyEl.appendChild(rtEl);
-    });
-    node.querySelector(".characters").appendChild(rubyEl);
-    node.querySelector(".characters").classList.add(commonClass);
-
-    node.querySelector(".definitions").innerText = result.definition;
-    let percentileText = "(uncommon)";
-    if (result.percentile > 0) {
-      percentileText = "p" + result.percentile;
-    }
-    node.querySelector(".percentile").innerText = percentileText;
-
-    document.querySelector("#results").appendChild(node);
-  });
-}
-
-function updateSegments(query) {
-  if (!dict) {
-    return;
-  }
-
-  const segments = dict.segmentText(query);
-
-  window.segments.innerHTML = "";
-
-  if (segments.length <= 1) {
-    return segments;
-  }
-
-  const wordTemplate = document.querySelector("#word-segment");
-  segments.forEach((segment, index) => {
-    const node = wordTemplate.content.cloneNode(true);
-    node.querySelector('.segment').innerText = segment;
-    window.segments.appendChild(node);
-
-    const realNode = window.segments.children[index];
-    if (index === curSegment) {
-      realNode.style.borderBottom = 'solid 2px #E84A5F';
-    }
-
-    const makeChangeSegmentCallback = (index) => {
-      return () => {
-        curSegment = index;
-        search();
-      };
-    };
-    realNode.addEventListener('click', makeChangeSegmentCallback(index));
-  })
-
-  return segments;
 }
 
 main();

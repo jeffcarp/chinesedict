@@ -19,11 +19,13 @@
   <script src="/main.js" type="module"></script>
 </head>
 <body>
-  <div class="content" id="app">
+  <div
+    class="content"
+    id="app">
     <!-- TODO: have a page if dict not downloaded -->
     <div class="column-left">
       <h2></h2>
-      <form>
+      <form @submit.prevent="querySubmit">
         <input
             type="text"
             name="q"
@@ -31,32 +33,38 @@
             v-model="query"
          />
       </form>
-      {{ query}}
       <div v-if="curArticle">
-        <h2>curArticle: {{ curArticle.title }}</h2>
-        <div class="post">
+        <article>
+          <h2>curArticle: {{ curArticle.title }}</h2>
           <span
-            v-for="word in curArticleWords"
+            v-for="(seg, index) in curArticleWords"
             class="word"
-            v-on:click="curSidebarWord = word">
-            {{ word }}
+            :class="{ selected: selectedIndex === index }"
+            v-on:click="selectedIndex = index">
+            {{ seg }}
           </span>
-        </div>
+        </article>
       </div>
-      <ol>
+
+      <ol v-if="!curArticle">
         <li v-for="article in articles"
             v-on:click="curArticle = article">
           {{ article.title }} - difficulty: {{ article.difficulty }}
         </li>
       </ol>
+
     </div>
     <div class="column-right">
       <div>{{ message }}</div>
-      <h3>{{ curSidebarWord }}</h3>
-      <div v-for="def in curDefinition" style="margin 0 0 1em;">
-        <div>{{ def.pinyin.join('') }}</div>
-        <div>{{ def.definition }}</div>
+
+      <div v-if="selectedWord" class="definition">
+        <h3>{{ selectedWord }}</h3>
+        <div v-for="def in curDefinition" style="margin 0 0 1em;">
+          <div>{{ def.pinyin.join('') }}</div>
+          <div>{{ def.definition }}</div>
+        </div>
       </div>
+
     </div>
   </div>
 </body>
