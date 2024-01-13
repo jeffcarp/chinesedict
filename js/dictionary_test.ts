@@ -72,3 +72,17 @@ Deno.test("isChineseChar", (t) => {
     assertEquals(isChineseChar(fixture), fixtures[fixture]);
   }
 });
+
+Deno.test("scoreText", async (t) => {
+  const fixtures: { [key: string]: number } = {
+      "你": 99,
+      "你好，你今天过得怎么样": 93.5,
+  };
+
+  const entries = await loadEntriesFromDisk();
+  const dict = new Dictionary(entries);
+
+  for (const fixture of Object.keys(fixtures)) {
+    assertEquals(dict.scoreText(fixture), fixtures[fixture]);
+  }
+});

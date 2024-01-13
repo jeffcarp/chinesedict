@@ -2,6 +2,7 @@
 
 from typing import Optional
 
+from google.protobuf import json_format
 from google.protobuf import text_format
 import json
 import io
@@ -10,7 +11,8 @@ import yaml
 import dictionary_pb2
 
 
-RELEASE_PATH = './release/dictionary.textproto'
+RELEASE_PATH = './data/dictionary.textproto'
+RELEASE_PATH_JSON = './spa/dictionary.json'
 
 
 class DictClient:
@@ -34,6 +36,10 @@ class DictClient:
     print('Writing textproto.')
     with io.open(RELEASE_PATH, "w") as f:
       f.write(text_format.MessageToString(self.dict, as_utf8=True))
+
+    print('Writing JSON.')
+    with io.open(RELEASE_PATH_JSON, "w") as f:
+      f.write(json_format.MessageToJson(self.dict, ensure_ascii=False))
 
   def _build_index(self):
     self._word_index = {}

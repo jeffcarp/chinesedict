@@ -20,21 +20,52 @@
 </head>
 <body>
   <div
+    v-cloak
     class="content"
     id="app">
     <!-- TODO: have a page if dict not downloaded -->
     <div class="column-left">
-      <h2></h2>
-      <form @submit.prevent="querySubmit">
-        <input
-            type="text"
-            name="q"
-            placeholder="Paste a block of text or choose a source material below"
-            v-model="query"
-         />
-      </form>
+
+      <div v-if="!curArticle">
+        <form @submit.prevent="querySubmit" class="search">
+          <input
+              type="text"
+              name="q"
+              placeholder="Enter any Chinese text or English word..."
+              v-model="query"
+           />
+        </form>
+
+        <div>
+          <ol class="search-result-list">
+            <li v-for="result in searchResults">
+              <div class="result-word"><b>{{ result.traditional }} ({{ result.traditional }})</b></div>
+              <div><small>{{ result.pinyin }}</small></div>
+              <div>{{ result.definitions.join(' / ').slice(0, 100) }}</div>
+              <div>
+                <span v-for="tag in result.tags">{{ tag }}&nbsp;</span>
+              </div>
+            </li>
+          </ol>
+
+        </div>
+
+        <div v-if="!searchResults">
+          <h4>Pre-loaded articles</h4>
+
+          <ol class="article-list">
+            <li v-for="article in articles"
+                v-on:click="curArticle = article">
+              <div><b>{{ article.title }}</b></div>
+              <div>difficulty: {{ article.difficulty }}</div>
+            </li>
+          </ol>
+        </div>
+      </div>
+
       <div v-if="curArticle">
         <article>
+          <span v-on:click="curArticle = null"><- back</span>
           <h2>curArticle: {{ curArticle.title }}</h2>
           <span
             v-for="(seg, index) in curArticleWords"
@@ -46,20 +77,33 @@
         </article>
       </div>
 
-      <ol v-if="!curArticle">
-        <li v-for="article in articles"
-            v-on:click="curArticle = article">
-          {{ article.title }} - difficulty: {{ article.difficulty }}
-        </li>
-      </ol>
-
     </div>
     <div class="column-right">
+
+      <div v-if="!selectedWord && !curArticle">
+        <div>
+          Dictionary status: ok
+        </div>
+      </div>
+
+      <div v-if="!selectedWord && curArticle" class="definition">
+        <div>
+          Article stats
+        </div>
+        <div>
+          Difficulty: {{ curArticleDifficulty }}
+        </div>
+      </div>
+
       <div v-if="selectedWord" class="definition">
+        <div>
+          <span v-on:click="selectedIndex = null">exit</span>
+        </div>
         <h3>{{ selectedWord }}</h3>
         <div v-for="def in curDefinition" style="margin 0 0 1em;" class="definition">
-          <div><small>{{ def.pinyin.join('') }}</small></div>
-          <div>{{ def.definition }}</div>
+          <div><small>{{ def.pinyin }}</small></div>
+          <div>Percentile: {{ def.percentile }}</div>
+          <div>{{ def.definitions }}</div>
         </div>
       </div>
 

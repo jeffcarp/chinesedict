@@ -1,8 +1,12 @@
 
+
+// TODO: get this from proto now.
 export interface Entry {
+  traditional: string;
   simplified: string;
-  pinyin: string[];
+  pinyin: string;
   searchablePinyin?: string;
+  percentile?: number;
 }
 
 interface Trie {
@@ -15,9 +19,23 @@ export class Dictionary {
 
   constructor(entries: Entry[]) {
     this.entries = entries;
+    this.postProcessEntries();
     this.trie = this.buildTrie();
+  }
 
-    // TODO: Build trie for word splitting
+  private postProcessEntries() {
+    this.entries.forEach(entry => {
+      // TODO: Move this into better search data structure.
+      //
+      let pinyinParts: string[] = [];
+      if (entry.pinyin.length > 0) {
+        pinyinParts = entry.pinyin.split(" ");
+      }
+      entry.searchablePinyin = pinyinParts.join("").normalize("NFD").replace(
+        /[\u0300-\u036f]/g,
+        "",
+      ).toLowerCase();
+    });
   }
 
   private buildTrie(): Trie {
@@ -85,37 +103,38 @@ export class Dictionary {
     return finalWords;
   }
 
-  searchWord() {
+  // Returns one word or null.
+  lookupWord(word: string): Entry | null {
+
+    // TODO: PRE BUILD INDEX!
+    for (const entry of this.entries) {
+      if (entry.simplified === word) {
+        return entry
+      }
+    }
+
+    return null
   }
-}
 
+  scoreText(text: string): number {
+    const segments = this.segmentText(text);
+    const scores = [];
+    for (const seg of segments) {
+      let entry = this.lookupWord(seg);
+      if (entry && entry.percentile) {
+        scores.push(entry.percentile)
+      }
+    }
 
-export function processRawTextToDict(rawText: string): Entry[] {
-  return rawText.split(/\r?\n/).map((row, i) => {
-    let [simplified, pinyin, definition, percentile] = row.split("∙");
-    let pinyinParts: string[] = [];
-    if (pinyin) {
-      pinyinParts = pinyin.split("_");
-    } else {
-      // console.log("No pinyin for row:", row, i);
+    if (scores.length === 0) {
+      return 0;
     }
-    if (!definition) {
-      // console.log("No def for row:", row, i);
-      definition = "";
-    }
-    const searchablePinyin = pinyinParts.join("").normalize("NFD").replace(
-      /[\u0300-\u036f]/g,
-      "",
-    ).toLowerCase();
-    const entry: Entry = {
-      simplified: simplified,
-      pinyin: pinyinParts,
-      searchablePinyin: searchablePinyin,
-      //definition: definition.split("■").join("\n"),
-      //percentile: Number(percentile),
-    };
-    return entry;
-  });
+
+    const sum = scores.reduce((accumulator, currentValue) => (
+      accumulator + currentValue
+    ), 0)
+    return sum / scores.length;
+  }
 }
 
 export function isChineseChar(character: string): boolean {

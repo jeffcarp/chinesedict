@@ -1,6 +1,9 @@
 serve:
 	python3 -m http.server -d public/ 8080
 
+serve_spa:
+	python3 -m http.server -d spa/ 8080
+
 deploy:
 	firebase deploy --project chinesedict2
 
@@ -22,7 +25,7 @@ push:
 	deno fmt --check
 	git push
 
-TSC_ARGS=js/dictionary.ts --outDir public/js/ --lib es2023 --module es2022
+TSC_ARGS=js/dictionary.ts --outDir spa/ --lib es2023 --module es2022
 build_js:
 	tsc $(TSC_ARGS)
 
@@ -30,6 +33,10 @@ build_js_watch:
 	tsc -w $(TSC_ARGS)
 
 # TODO: Merge below with above.
+
+release_dict:
+	python3 scripts/release_dict.py
+
 
 update:
 	python3 update.py
@@ -42,7 +49,9 @@ serve_nowatch:
 	go run server/*.go
 
 proto:
-	protoc --python_out=scripts/. --go_out=server/. \
+	protoc \
+		--python_out=scripts/. \
+		--go_out=server/. \
 		--go_opt=paths=source_relative \
 		dictionary.proto
 

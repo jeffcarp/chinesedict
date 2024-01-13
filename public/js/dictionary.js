@@ -1,9 +1,21 @@
 var Dictionary = /** @class */ (function () {
     function Dictionary(entries) {
         this.entries = entries;
+        this.postProcessEntries();
         this.trie = this.buildTrie();
-        // TODO: Build trie for word splitting
     }
+    Dictionary.prototype.postProcessEntries = function () {
+        this.entries = this.entries.map(function (entry) {
+            // TODO: Move this into better search data structure.
+            //
+            var pinyinParts = [];
+            if (entry.pinyin) {
+                pinyinParts = entry.pinyin.split(" ");
+            }
+            entry.searchablePinyin = pinyinParts.join("").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+            return entry;
+        });
+    };
     Dictionary.prototype.buildTrie = function () {
         var trie = {};
         this.entries.forEach(function (entry) {
@@ -71,36 +83,36 @@ var Dictionary = /** @class */ (function () {
         }
         return finalWords;
     };
-    Dictionary.prototype.searchWord = function () {
+    // Returns one word or null.
+    Dictionary.prototype.lookupWord = function (word) {
+        // TODO: PRE BUILD INDEX!
+        for (var _i = 0, _a = this.entries; _i < _a.length; _i++) {
+            var entry = _a[_i];
+            if (entry.simplified === word) {
+                return entry;
+            }
+        }
+        return null;
+    };
+    Dictionary.prototype.scoreText = function (text) {
+        var segments = this.segmentText(text);
+        var scores = [];
+        for (var _i = 0, segments_1 = segments; _i < segments_1.length; _i++) {
+            var seg = segments_1[_i];
+            var entry = this.lookupWord(seg);
+            if (entry && entry.percentile) {
+                scores.push(entry.percentile);
+            }
+        }
+        if (scores.length === 0) {
+            return 0;
+        }
+        var sum = scores.reduce(function (accumulator, currentValue) { return (accumulator + currentValue); }, 0);
+        return sum / scores.length;
     };
     return Dictionary;
 }());
 export { Dictionary };
-export function processRawTextToDict(rawText) {
-    return rawText.split(/\r?\n/).map(function (row, i) {
-        var _a = row.split("∙"), simplified = _a[0], pinyin = _a[1], definition = _a[2], percentile = _a[3];
-        var pinyinParts = [];
-        if (pinyin) {
-            pinyinParts = pinyin.split("_");
-        }
-        else {
-            // console.log("No pinyin for row:", row, i);
-        }
-        if (!definition) {
-            // console.log("No def for row:", row, i);
-            definition = "";
-        }
-        var searchablePinyin = pinyinParts.join("").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-        var entry = {
-            simplified: simplified,
-            pinyin: pinyinParts,
-            searchablePinyin: searchablePinyin,
-            //definition: definition.split("■").join("\n"),
-            //percentile: Number(percentile),
-        };
-        return entry;
-    });
-}
 export function isChineseChar(character) {
     return /^[\u3400-\u4dbf|\u4e00-\u9fef]+$/.test(character);
 }
