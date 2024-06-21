@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+    <ShortName>ChineseDict</ShortName>
+    <Description>Search ChineseDict</Description>
+    <Url type="text/html" method="get" template="https://chinesedict2.web.app/?q={searchTerms}"/>
+    <Image height="16" width="16" type="image/png">https://chinesedict2.web.app/zhong.png</Image>
+    <InputEncoding>UTF-8</InputEncoding>
+</OpenSearchDescription>
+
