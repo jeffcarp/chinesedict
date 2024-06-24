@@ -109,8 +109,10 @@ func tagHandler(w http.ResponseWriter, r *http.Request) {
 	segments := strings.Split(urlPath, "/")
 	tagName := segments[len(segments)-1]
 
-	entries := globalDict.EntriesWithTag(tagName)[:200]
-	if len(entries) == 0 {
+	entries := globalDict.EntriesWithTag(tagName)
+	if len(entries) > 500 {
+		entries = entries[:500] // TODO: implement pagination
+	} else if len(entries) == 0 {
 		fmt.Fprintf(w, "No entries found.")
 		return
 	}

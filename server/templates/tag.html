@@ -2,7 +2,8 @@
 
 <h1>Tag: {{ .TagName }}</h1>
 
-Entries: {{ len .Entries }}
+Entries: {{ len .Entries }} <br/>
+<small style="color: #ccc;">(*pagination not supported yet, results capped at 500)</small>
 
 <ul class="word-list">
 {{range .Entries }}
