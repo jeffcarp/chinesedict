@@ -1,19 +1,23 @@
 {{template "header.html"}}
 
-<h1>Sources</h1>
+<div id="results">
+  <h1>Sources</h1>
 
-ChineseDict is grateful to use these sources of data:
+  <p>ChineseDict is grateful to use these sources of data:</p>
 
-- English definitions from CC-CEDICT
-- HSK levels from [chinesetest.cn](https://www.chinesetest.cn/ChangeLan.do),
-  compiled by [chinees-leren.nl](https://www.chinees-leren.nl/dictionary/).
+  <ul>
+    <li>English definitions from <a href="https://cc-cedict.org/wiki/">CC-CEDICT</a>.</li>
+    <li>HSK levels from <a href="https://www.chinesetest.cn/ChangeLan.do">chinesetest.cn</a>, compiled by <a href="https://www.chinees-leren.nl/dictionary/">chinees-leren.nl</a>.</li>
+  </ul>
 
-<h1>Datasets</h1>
+  <h1>Dataset</h1>
 
-The above data sources are compiled along with manually updated information
-into downloadable dictionary datasets. The total content size is around 30MB.
+  <p>The above data sources are compiled along with manually updated information
+  into downloadable dictionary datasets. The total content size is around 30MB.
+  <a href="https://github.com/jeffcarp/chinesedict/blob/main/data/dictionary.textproto">Download here</a>.
+  </p>
 
-- [Download here](https://github.com/jeffcarp/chinesedict/releases).
 
+</div>
 
 {{template "footer.html"}}
