@@ -36,18 +36,18 @@ update:
 	find release -exec wc -c {} +
 
 serve_watch:
-	gow -e=go,mod,html,css,textproto run server/*.go
+	(cd server && gow -e=go,mod,html,css,textproto run *.go)
 
 serve_nowatch:
-	go run server/*.go
+	(cd server && go run *.go)
+
+deploy_go:
+	(cd server && gcloud app deploy ./app.yaml --project=zhongwenfyi)
 
 proto:
 	protoc --python_out=scripts/. --go_out=server/. \
 		--go_opt=paths=source_relative \
 		dictionary.proto
-
-deploy_go:
-	gcloud app deploy ./server/app.yaml --project=zhongwenfyi
 
 # Via: https://www.mdbg.net/chinese/dictionary?page=cc-cedict
 download_latest_dict:

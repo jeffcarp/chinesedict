@@ -20,6 +20,16 @@ type HeaderData struct {
 
 // index.html should be routed as a static file.
 
+func cacheControlMiddleware(next http.Handler) http.Handler {
+    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if strings.HasSuffix(r.URL.Path, ".js") {
+            w.Header().Set("Content-Type", "text/javascript; charset=utf-8")
+        }
+		w.Header().Set("Cache-Control", "public, max-age=86400")
+        next.ServeHTTP(w, r)
+    })
+}
+
 func main() {
 	log.Print("Loading data...")
 	wordTemplate = initTemplates()
@@ -33,6 +43,15 @@ func main() {
 
 	log.Print("Starting server...")
 	mux := http.NewServeMux()
+
+	mux.Handle(
+		"/static/",
+		http.StripPrefix(
+			"/static/",
+			cacheControlMiddleware(http.FileServer(http.Dir("./static"))),
+		),
+	)
+
 	mux.HandleFunc("/word/", wordHandler)
 	mux.HandleFunc("/tag/", tagHandler)
 	mux.HandleFunc("/results", resultsHandler)
@@ -49,7 +68,7 @@ func main() {
 
 func initTemplates() *template.Template {
 	// Parse the templates
-	wordTemplate, err := template.ParseGlob("./server/templates/*")
+	wordTemplate, err := template.ParseGlob("./templates/*")
 	if err != nil {
 		log.Fatal("Failed to parse templates:", err)
 	}
