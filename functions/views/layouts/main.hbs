@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 <head>
+  <!-- IMPORTANT THIS IS DUPLICATED WITH PUBLIC/INDEX.HTML -->
   <title>ChineseDict</title>
 
   <meta charset="utf-8">
@@ -42,30 +43,9 @@
         </div>
     </header>
 
-    <ul id="results" class="word-list">
-      <li style="border-bottom: none; font-size: 1.2rem;">
-        <p><b>ChineseDict</b> is a fast Chinese-English dictionary.</p>
-
-        <p>To get started, enter any Chinese text or English word in the search box.</p>
-
-        <p>Examples:</p>
-
-        <ul>
-          <li>A word: <a href="/?q=小狗">小狗</a></li>
-          <li>English words: <a href="/?q=news">news</a></li>
-          <li>Multiple Chinese words to segment: <a href="/?q=我们正在吃饭">我们正在吃饭</a></li>
-        </ul>
-
-      </li>
-    </ul>
-    <script>
-      // TEMPORARY TERRIBLE HACK
-      const queryParams = new URLSearchParams(window.location.search);
-      const query = queryParams.get("q");
-      if (query) {
-        document.querySelector('.word-list').innerText = 'Loading...';
-      }
-    </script>
+    <div>
+      {{{ body }}}
+    </div>
 
     <footer>
       Dictionary data is provided by the wonderful <a href="https://cc-cedict.org/wiki/">CC-EDICT</a>.<br/>
