@@ -10,21 +10,50 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const path = require('path');
 const fs = require('fs');
-const dictionary_1 = require("./dictionary");
+// const protobuf = require('protocol-buffers')
+const dict_1 = require("./dict");
+// import { Dictionary } from "./dictionary"; // Requires Closure compiler :/
 const https_1 = require("firebase-functions/v2/https");
-// const {logger} = require("firebase-functions");
+const { logger } = require("firebase-functions");
 const express = require('express');
 const express_handlebars_1 = require("express-handlebars");
-const DICT_PATH = path.join(__dirname, 'cedict_parsed.csv');
+// const DICT_PATH_OLD = path.join(__dirname, 'cedict_parsed.csv');
+// const DICT_PROTO_PATH = path.join(__dirname, 'dictionary.proto');
+const DICT_PATH = path.join(__dirname, 'full_dict_raw.json');
 const app = express();
 app.engine('handlebars', (0, express_handlebars_1.engine)({ extname: '.hbs' }));
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, '..', 'views'));
-function loadDictionary() {
-    const rawCsv = fs.readFileSync(DICT_PATH, 'utf-8');
-    return (0, dictionary_1.processRawTextToDict)(rawCsv);
+function cacheControlMiddleware(req, res, next) {
+    // Cache for 7d.
+    res.set('Cache-Control', 'public, max-age=604800');
+    next();
 }
-const dict = new dictionary_1.Dictionary(loadDictionary());
+app.use(cacheControlMiddleware);
+function loadDictionary() {
+    logger.log('COLD START - REINITIALIZING DICTIONARY');
+    // const messages = protobuf(fs.readFileSync(DICT_PROTO_PATH));
+    // TODO: Read raw proto file from disk to improve startup time.
+    // Or use CSV or TSV to skip the proto dependency.
+    const rawDict = JSON.parse(fs.readFileSync(DICT_PATH, 'utf8'));
+    // const dictionary = messages.Dictionary.decode(rawDict);
+    //
+    logger.log('DICT STATS');
+    logger.log('ENTRIES = ', rawDict.entries.length);
+    const fakeRawEntries = rawDict.entries.map((entry) => {
+        return {
+            simplified: entry.simplified,
+            pinyin: entry.pinyin,
+            // searchablePinyin: "",
+            definitions: entry.definitions,
+            //percentile: Number(percentile),
+        };
+    });
+    // const rawCsv = fs.readFileSync(DICT_PATH_OLD, 'utf-8');
+    // return processRawTextToDict(rawCsv)
+    return fakeRawEntries;
+}
+const dict = new dict_1.Dict(loadDictionary());
 //export const wordpage = onRequest(async (req, res) => {
 app.get('/word/:word', (req, res) => {
     let foundEntry = dict.findWord(req.params.word);

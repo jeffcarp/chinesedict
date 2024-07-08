@@ -45,7 +45,10 @@ deploy_go:
 	(cd server && gcloud app deploy ./app.yaml --project=zhongwenfyi)
 
 proto:
-	protoc --python_out=scripts/. --go_out=server/. \
+	protoc \
+		--python_out=scripts/. \
+		--js_out=functions/lib/. \
+		--go_out=server/. \
 		--go_opt=paths=source_relative \
 		dictionary.proto
 

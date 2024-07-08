@@ -1,2 +1,10 @@
 <h1>{{ entry.simplified }}</h1>
 <p>{{ entry.pinyin }}</p>
+
+Definitions
+
+<ul class="people_list">
+  {{#each entry.definitions}}
+    <li>{{this}}</li>
+  {{/each}}
+</ul>

@@ -1,0 +1,25 @@
+option go_package = "./server/main";
+
+message Entry {
+  optional string traditional = 1;
+  optional string simplified = 2;
+  optional string pinyin = 3;
+  repeated string definitions = 4;
+  repeated string tags = 5;
+  repeated string examples = 6;
+  optional int32 percentile = 7;
+  repeated string contains = 8;
+  repeated string partof = 9;
+  repeated string related = 10;
+}
+
+message Dictionary {
+  // TODO: also add the date each data source was last updated.
+  repeated Entry entries = 1;
+}
+
+message Character {
+  optional string traditional = 1;
+  optional string simplified = 2;
+  optional string pinyin = 3;
+}
