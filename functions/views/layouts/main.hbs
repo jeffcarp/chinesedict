@@ -2,7 +2,11 @@
 <html>
 <head>
   <!-- IMPORTANT THIS IS DUPLICATED WITH PUBLIC/INDEX.HTML -->
-  <title>ChineseDict</title>
+  {{#if title}}
+    <title>{{title}} - ChineseDict</title>
+  {{else}}
+    <title>ChineseDict</title>
+  {{/if}}
 
   <meta charset="utf-8">
 
@@ -28,6 +32,8 @@
     <header>
       <nav>
         <h1><a href="/">ChineseDict</a></h1>
+        <span><a href="/random">Random</a></span>
+        <span><a href="/about">About</a></span>
       </nav>
 
       <form action="/" method="GET">
@@ -42,6 +48,9 @@
         <div id="segments">
         </div>
     </header>
+
+    <ul id="results" class="word-list">
+    </ul>
 
     <div>
       {{{ body }}}
@@ -60,7 +69,7 @@
 <template id="search-result-li">
   <li>
       <div class="word">
-        <div class="characters"></div>
+        <a class="characters"></a>
         <div class="definitions"></div>
         <div class="percentile-outer"><span class="percentile"></span></div>
       </div>

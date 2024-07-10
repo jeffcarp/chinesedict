@@ -1,10 +1,12 @@
-// COPIED FROM js/
-
+// TODO: Reuse proto definition.
 export interface Entry {
+  traditional: string;
   simplified: string;
-  pinyin: string[];
+  pinyin: string;
   searchablePinyin?: string;
 	definitions: string[];
+  tags: string[];
+  examples: string[];
 }
 
 interface Trie {
@@ -38,6 +40,11 @@ export class Dict {
     return trie;
   }
 
+  randomEntry(): Entry {
+    const index = Math.floor(Math.random() * this.entries.length);
+    return this.entries[index];
+  }
+
   findWord(input: string): Entry | null {
     // TODO do this in a not extremely stupid way
     let foundEntry = null;
@@ -49,6 +56,20 @@ export class Dict {
     }
 
     return foundEntry
+  }
+
+  findTag(input: string): Entry[] {
+    // TODO do this in a not extremely stupid way
+    let entries = [];
+    for (const entry of this.entries) {
+      if (!entry.tags) {
+        continue
+      } else if (entry.tags.includes(input)) {
+        entries.push(entry);
+      }
+    }
+
+    return entries;
   }
 
   // Splits an input string into a list of strings, matching if possible.

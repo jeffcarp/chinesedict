@@ -132,6 +132,11 @@ function searchDict(query) {
 function search() {
   const query = document.querySelector("input#query").value;
 
+  if (!query) {
+    document.querySelector("#results").innerHTML = "";
+    return;
+  }
+
   // Segment before querying; use the first segment initially.
   const segments = updateSegments(query);
   if (segments.length == 0) {
@@ -166,6 +171,7 @@ function search() {
     });
     node.querySelector(".characters").appendChild(rubyEl);
     node.querySelector(".characters").classList.add(commonClass);
+    node.querySelector(".characters").href = `/word/${result.simplified}`
 
     node.querySelector(".definitions").innerText = result.definition;
     let percentileText = "(uncommon)";

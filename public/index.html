@@ -27,6 +27,8 @@
     <header>
       <nav>
         <h1><a href="/">ChineseDict</a></h1>
+        <span><a href="/random">Random</a></span>
+        <span><a href="/about">About</a></span>
       </nav>
 
       <form action="/" method="GET">
@@ -51,7 +53,7 @@
         <p>Examples:</p>
 
         <ul>
-          <li>A word: <a href="/?q=小狗">小狗</a></li>
+          <li>A word: <a href="/word/小狗">小狗</a></li>
           <li>English words: <a href="/?q=news">news</a></li>
           <li>Multiple Chinese words to segment: <a href="/?q=我们正在吃饭">我们正在吃饭</a></li>
         </ul>
@@ -80,7 +82,7 @@
 <template id="search-result-li">
   <li>
       <div class="word">
-        <div class="characters"></div>
+        <a class="characters"></a>
         <div class="definitions"></div>
         <div class="percentile-outer"><span class="percentile"></span></div>
       </div>

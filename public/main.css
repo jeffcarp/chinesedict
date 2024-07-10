@@ -37,7 +37,12 @@ header h1 a {
   text-decoration: none;
 }
 header nav {
-  padding: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
 }
 header nav ul {
   display: flex;
@@ -81,6 +86,51 @@ input[name=q] {
   margin: 0;
   padding: 0;
 }
+.word-page h1 a {
+  color: #2b142c;
+}
+@media (prefers-color-scheme: dark) {
+    .word-page h1 a {
+      color: white;
+    }
+}
+.word-page h1 span {
+  font-size: 4rem;
+}
+.word-page h1 span a {
+  text-decoration: none;
+}
+.word-page h1 rt {
+  font-size: 0.3em;
+  font-weight: 200;
+  user-select: none;
+}
+
+
+.word-info {
+  display: flex;
+}
+.word-info .column {
+  flex: 1;
+}
+.word-page section {
+	border-top: solid 1px #ccc;
+	margin-top: 2em;
+	padding-top: 2em;
+}
+.word-page h3 {
+	margin-top: 0;
+	padding-top: 0;
+}
+.word-page .definitions {
+  font-size: 1.5em;
+}
+.word-page .definitions ol li{
+	margin-bottom: 0.5em;
+}
+
+
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -128,6 +178,8 @@ ul.word-list > li {
 .word .characters {
   width: 30%;
   font-size: 2em;
+  color: #111;
+  text-decoration: none;
 }
 .word .characters.uncommon {
   font-size: 1.25em;

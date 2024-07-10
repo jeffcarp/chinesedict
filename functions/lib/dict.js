@@ -1,5 +1,4 @@
 "use strict";
-// COPIED FROM js/
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.isChineseChar = exports.Dict = void 0;
 class Dict {
@@ -25,6 +24,10 @@ class Dict {
         });
         return trie;
     }
+    randomEntry() {
+        const index = Math.floor(Math.random() * this.entries.length);
+        return this.entries[index];
+    }
     findWord(input) {
         // TODO do this in a not extremely stupid way
         let foundEntry = null;
@@ -35,6 +38,19 @@ class Dict {
             }
         }
         return foundEntry;
+    }
+    findTag(input) {
+        // TODO do this in a not extremely stupid way
+        let entries = [];
+        for (const entry of this.entries) {
+            if (!entry.tags) {
+                continue;
+            }
+            else if (entry.tags.includes(input)) {
+                entries.push(entry);
+            }
+        }
+        return entries;
     }
     // Splits an input string into a list of strings, matching if possible.
     segmentText(input) {

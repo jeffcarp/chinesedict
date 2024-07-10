@@ -1,10 +1,57 @@
-<h1>{{ entry.simplified }}</h1>
-<p>{{ entry.pinyin }}</p>
+<div class="word-page">
+  <div class="word-info">
+    <div class="column">
+      <h1 class="characters">
+        <ruby>
+          {{#each chars}}
+            <span><a href="/word/{{this.simplified}}">{{this.simplified}}</a></span>
+            <rt>{{ this.pinyin }}</rt>
+          {{/each}}
+        </ruby>
+      </h1>
 
-Definitions
+      <p>(traditional: {{ entry.traditional }})</p>
 
-<ul class="people_list">
-  {{#each entry.definitions}}
-    <li>{{this}}</li>
-  {{/each}}
-</ul>
+    <section>
+      <h3>Tags</h3>
+      <ul>
+      {{#each entry.tags}}
+        <li><a href="/tag/{{this}}">{{this}}</a></li>
+      {{/each}}
+      </ul>
+    </section>
+
+    <section>
+      <h3>Resources</h3>
+
+      <ul>
+        <li><a href="https://en.wiktionary.org/wiki/{{ entry.simplified }}">Wiktionary: {{ entry.simplified }}</a></li>
+        <li><a href="https://www.mdbg.net/chinese/dictionary?wdqb={{ entry.simplified }}">MDBG: {{ entry.simplified }}</a></li>
+        <li>Examples with {{ entry.simplified }} on <a href="https://tatoeba.org/en/sentences/search?from=cmn&query={{ entry.simplified }}&to=eng">Tatoeba</a></li>
+      </ul>
+    </section>
+
+    </div>
+    <div class="column">
+      <div class="definitions">
+        <ol>
+          {{#each entry.definitions}}
+            <li>{{this}}</li>
+          {{/each}}
+        </ol>
+      </div>
+    </div>
+  </div>
+
+
+  <section>
+    <h2>Examples</h2>
+
+    {{#each entry.examples}}
+      <p>{{this}}</p>
+    {{else}}
+      <p>No examples. <a href="https://github.com/jeffcarp/chinesedict/issues/new">Add one?</a></p>
+    {{/each}}
+  </section>
+
+</div>

@@ -24,45 +24,40 @@ const app = express();
 app.engine('handlebars', (0, express_handlebars_1.engine)({ extname: '.hbs' }));
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, '..', 'views'));
-function cacheControlMiddleware(req, res, next) {
+function cacheIt(req, res, next) {
     // Cache for 7d.
     res.set('Cache-Control', 'public, max-age=604800');
     next();
 }
-app.use(cacheControlMiddleware);
 function loadDictionary() {
-    logger.log('COLD START - REINITIALIZING DICTIONARY');
-    // const messages = protobuf(fs.readFileSync(DICT_PROTO_PATH));
     // TODO: Read raw proto file from disk to improve startup time.
     // Or use CSV or TSV to skip the proto dependency.
     const rawDict = JSON.parse(fs.readFileSync(DICT_PATH, 'utf8'));
-    // const dictionary = messages.Dictionary.decode(rawDict);
-    //
-    logger.log('DICT STATS');
+    logger.log('COLD START - DICT STATS');
     logger.log('ENTRIES = ', rawDict.entries.length);
-    const fakeRawEntries = rawDict.entries.map((entry) => {
-        return {
-            simplified: entry.simplified,
-            pinyin: entry.pinyin,
-            // searchablePinyin: "",
-            definitions: entry.definitions,
-            //percentile: Number(percentile),
-        };
-    });
-    // const rawCsv = fs.readFileSync(DICT_PATH_OLD, 'utf-8');
-    // return processRawTextToDict(rawCsv)
-    return fakeRawEntries;
+    return rawDict.entries;
 }
 const dict = new dict_1.Dict(loadDictionary());
 //export const wordpage = onRequest(async (req, res) => {
-app.get('/word/:word', (req, res) => {
-    let foundEntry = dict.findWord(req.params.word);
-    if (foundEntry) {
+app.get('/word/:word', cacheIt, (req, res) => {
+    const entry = dict.findWord(req.params.word);
+    if (entry) {
         try {
-            const data = {
-                entry: foundEntry,
-            };
-            res.render('word', data);
+            const chars = [];
+            for (const simpChar of entry.simplified.split('')) {
+                chars.push({
+                    simplified: simpChar,
+                });
+            }
+            entry.pinyin.split(' ').forEach((pinyinChar, i) => {
+                chars[i].pinyin = pinyinChar;
+            });
+            entry.tags = entry.tags.filter((t) => t != 'cedict');
+            res.render('word', {
+                title: entry.simplified,
+                chars: chars,
+                entry: entry,
+            });
         }
         catch (error) {
             console.error("Error rendering email:", error);
@@ -72,6 +67,21 @@ app.get('/word/:word', (req, res) => {
     else {
         res.send('Word not found.');
     }
+});
+// TODO should this be its own page or just a /results page with #HSK1?
+app.get('/tag/:tag', cacheIt, (req, res) => {
+    const entries = dict.findTag(req.params.tag);
+    logger.log('ENTRIES LEN', entries.length);
+    res.render('results', {
+        entries: entries,
+    });
+});
+app.get('/random', (req, res) => {
+    const entry = dict.randomEntry();
+    res.redirect(302, `/word/${entry.simplified}`);
+});
+app.get('/about', cacheIt, (req, res) => {
+    res.render('about');
 });
 exports.app = (0, https_1.onRequest)(app);
 //# sourceMappingURL=index.js.map
