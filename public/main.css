@@ -129,7 +129,12 @@ input[name=q] {
 	margin-bottom: 0.5em;
 }
 
-
+#results h4 {
+    color: #333;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    font-size: 1.2em;
+}
 
 table {
   width: 100%;
