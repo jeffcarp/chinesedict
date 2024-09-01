@@ -29,27 +29,14 @@ build_js:
 build_js_watch:
 	tsc -w $(TSC_ARGS)
 
-# TODO: Merge below with above.
-
 update:
 	python3 update.py
 	find release -exec wc -c {} +
-
-serve_watch:
-	(cd server && gow -e=go,mod,html,css,textproto run *.go)
-
-serve_nowatch:
-	(cd server && go run *.go)
-
-deploy_go:
-	(cd server && gcloud app deploy ./app.yaml --project=zhongwenfyi)
 
 proto:
 	protoc \
 		--python_out=scripts/. \
 		--js_out=functions/lib/. \
-		--go_out=server/. \
-		--go_opt=paths=source_relative \
 		dictionary.proto
 
 # Via: https://www.mdbg.net/chinese/dictionary?page=cc-cedict
