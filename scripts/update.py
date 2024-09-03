@@ -90,6 +90,13 @@ def apply_hsk_tags(client):
 
 def add_example_sentences(client):
   print('Adding example sentences...')
+
+
+  for index, entry in enumerate(tqdm.tqdm(client.dict.entries)):
+    while len(entry.examples) > 5:
+      del entry.examples[5]
+
+  return
   with open(TATOEBA_PATH, 'r+') as f:
     for line in tqdm.tqdm(list(f.readlines())):
       words = jieba.lcut(line)

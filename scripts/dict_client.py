@@ -10,7 +10,7 @@ import yaml
 import dictionary_pb2
 
 
-RELEASE_PATH = './release/dictionary.textproto'
+RELEASE_PATH = './data/dictionary.textproto'
 
 
 class DictClient:

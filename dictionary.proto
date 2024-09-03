@@ -23,3 +23,9 @@ message Character {
   optional string simplified = 2;
   optional string pinyin = 3;
 }
+
+message Example {
+  optional string text = 1;
+  optional string english = 2;
+  optional string highlight = 3;
+}
