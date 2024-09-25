@@ -4,13 +4,24 @@ export interface Entry {
   simplified: string;
   pinyin: string;
   searchablePinyin?: string;
-	definitions: string[];
   tags: string[];
-  examples: string[];
+  examples: Example[];
+	definitions: Definition[];
 }
 
 interface Trie {
   [key: string]: Trie;
+}
+
+interface Definition {
+  definition: string;
+  example: Example;
+}
+
+interface Example {
+  example: string;
+  english: string;
+  highlight: string;
 }
 
 export class Dict {
@@ -19,8 +30,9 @@ export class Dict {
 
   constructor(entries: Entry[]) {
     this.entries = entries;
+    console.log('ENTRIES!!!!', this.entries.length)
+    //this.trie = {};
     this.trie = this.buildTrie();
-    this.trie = {}
   }
 
   // TODO: Generate and pre-cache this beforehand.
@@ -46,6 +58,7 @@ export class Dict {
   }
 
   findWord(input: string): Entry | null {
+
     // TODO do this in a not extremely stupid way
     let foundEntry = null;
     for (const entry of this.entries) {

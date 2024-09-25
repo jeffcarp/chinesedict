@@ -42,8 +42,8 @@ function loadDictionary() {
   // Or use CSV or TSV to skip the proto dependency.
   const rawDict = JSON.parse(fs.readFileSync(DICT_PATH, 'utf8'));
   logger.log('COLD START - DICT STATS')
-  logger.log('ENTRIES = ', rawDict.entries.length)
-  return rawDict.entries
+  logger.log('ENTRIES = ', rawDict.length)
+  return rawDict
 }
 
 const dict = new Dict(loadDictionary());

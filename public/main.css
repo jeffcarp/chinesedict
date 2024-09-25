@@ -125,15 +125,24 @@ input[name=q] {
 .word-page .definitions {
   font-size: 1.5em;
 }
-.word-page .definitions ol li{
+.word-page .definitions ol li {
 	margin-bottom: 0.5em;
 }
 
 #results h4 {
-    color: #333;
     margin-bottom: 0;
     padding-bottom: 0;
     font-size: 1.2em;
+}
+
+.result-boxes {
+    margin: 0;
+    padding: 0;
+}
+.result-boxes li {
+    display: inline-block;
+    padding: 0.5em;
+    border: 1px rgba(255, 255, 255, 0.5) dashed;
 }
 
 table {
@@ -208,6 +217,22 @@ ul.word-list > li {
   font-size: 0.75em;
   color: #888;
 }
+
+@media (prefers-color-scheme: dark) {
+    .word .characters {
+      color: #eee;
+    }
+    .word .characters.uncommon {
+      color: #ccc;
+    }
+    .word .characters rt {
+      color: #ccc;
+    }
+    .word .percentile-outer {
+      color: #ccc;
+    }
+}
+
 .word ruby rt {
   user-select: none;
 }
@@ -225,6 +250,24 @@ ul.word-list > li {
   cursor: pointer;
   background-color: #ddd;
 }
+
+.inline-example {
+    color: #666;
+    padding: 0.25em 0;
+}
+.inline-example .example {
+    font-size: 0.7em;
+}
+.inline-example .english {
+    font-size: 0.6em;
+}
+@media (prefers-color-scheme: dark) {
+    .inline-example {
+        color: #ccc;
+    }
+}
+
+
 footer {
   margin-top: 4em;
   padding-top: 4em;

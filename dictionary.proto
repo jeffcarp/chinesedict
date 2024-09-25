@@ -4,13 +4,13 @@ message Entry {
   optional string traditional = 1;
   optional string simplified = 2;
   optional string pinyin = 3;
-  repeated string definitions = 4;
   repeated string tags = 5;
-  repeated string examples = 6;
+  repeated Example examples = 6;
   optional int32 percentile = 7;
   repeated string contains = 8;
   repeated string partof = 9;
   repeated string related = 10;
+  repeated Definition definitions = 13;
 }
 
 message Dictionary {
@@ -24,8 +24,13 @@ message Character {
   optional string pinyin = 3;
 }
 
+message Definition {
+  optional string definition = 1;
+  optional Example example = 2;
+}
+
 message Example {
-  optional string text = 1;
+  optional string example = 1;
   optional string english = 2;
   optional string highlight = 3;
 }

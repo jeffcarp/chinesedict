@@ -90,13 +90,6 @@ def apply_hsk_tags(client):
 
 def add_example_sentences(client):
   print('Adding example sentences...')
-
-
-  for index, entry in enumerate(tqdm.tqdm(client.dict.entries)):
-    while len(entry.examples) > 5:
-      del entry.examples[5]
-
-  return
   with open(TATOEBA_PATH, 'r+') as f:
     for line in tqdm.tqdm(list(f.readlines())):
       words = jieba.lcut(line)
@@ -110,6 +103,7 @@ def main(args: argparse.Namespace):
   client = dict_client.DictClient()
 
   print('UPDATE FLAG', args.update)
+  '''
   if 'cedict' in args.update:
     update_cedict(client)
   if 'chengyu' in args.update:
@@ -118,6 +112,67 @@ def main(args: argparse.Namespace):
     apply_hsk_tags(client)
   if 'examples' in args.update:
     add_example_sentences(client)
+  '''
+
+
+  '''
+  # Temporary: clip all examples to 5.
+  for index, entry in enumerate(tqdm.tqdm(client.dict.entries)):
+    while len(entry.examples) > 5:
+      del entry.examples[5]
+  '''
+
+  '''
+  # Temporary: populate new full definitions.
+  for index, entry in enumerate(tqdm.tqdm(client.dict.entries)):
+    print('TEST ENTRY:', entry)
+    while entry.definitions_full:
+      del entry.definitions_full[0]
+    for definition in entry.definitions:
+      definition_proto = dictionary_pb2.Definition()
+      definition_proto.definition = definition
+      entry.definitions_full.append(definition_proto)
+  '''
+
+  '''
+  # Temporary: delete all old definitions before renaming
+  for index, entry in enumerate(tqdm.tqdm(client.dict.entries)):
+    while entry.definitions_full:
+      del entry.definitions_full[0]
+  '''
+
+  '''
+  # Temporary: populate new full examples.
+  for index, entry in enumerate(tqdm.tqdm(client.dict.entries)):
+    print('TEST ENTRY:', entry)
+    for example in entry.examples:
+      ex_proto = dictionary_pb2.Example()
+      ex_proto.example = example
+      entry.examples_full.append(ex_proto)
+  '''
+
+  '''
+  # Temporary: populate new full examples.
+  for index, entry in enumerate(tqdm.tqdm(client.dict.entries)):
+    print('ENTRY:', entry)
+    while entry.examples:
+      del entry.examples[0]
+  '''
+
+  '''
+  # Temporary: populate new full examples.
+  for index, entry in enumerate(tqdm.tqdm(client.dict.entries)):
+    print('ENTRY:', entry)
+    for ex in entry.examples_full:
+      entry.examples.append(ex)
+      #del entry.examples_full[0]
+  '''
+
+  for index, entry in enumerate(tqdm.tqdm(client.dict.entries)):
+    print('ENTRY:', entry)
+    while entry.examples_full:
+      del entry.examples_full[0]
+
   client.write()
 
 

@@ -4,8 +4,9 @@ exports.isChineseChar = exports.Dict = void 0;
 class Dict {
     constructor(entries) {
         this.entries = entries;
+        console.log('ENTRIES!!!!', this.entries.length);
+        //this.trie = {};
         this.trie = this.buildTrie();
-        this.trie = {};
     }
     // TODO: Generate and pre-cache this beforehand.
     buildTrie() {

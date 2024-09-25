@@ -36,7 +36,15 @@
       <div class="definitions">
         <ol>
           {{#each entry.definitions}}
-            <li>{{this}}</li>
+            <li>
+                {{this.definition}}
+                {{#if this.example}}
+                    <div class="inline-example">
+                        <div class="example">{{ this.example.example }}</div>
+                        <div class="english">{{ this.example.english }}</div>
+                    </div>
+                {{/if}}
+            </li>
           {{/each}}
         </ol>
       </div>

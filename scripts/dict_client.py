@@ -2,6 +2,7 @@
 
 from typing import Optional
 
+from google.protobuf import json_format
 from google.protobuf import text_format
 import json
 import io
@@ -27,13 +28,18 @@ class DictClient:
 
   def write(self):
     print(f'Writing {len(self.dict.entries)} to {RELEASE_PATH}.')
-    # Ensure entries are sorted on write.
-    #self.entries = sorted(self.entries, key=lambda entry: entry.traditional)
-    #dict_entries = [json_format.MessageToDict(entry) for entry in self.entries]
 
     print('Writing textproto.')
     with io.open(RELEASE_PATH, "w") as f:
       f.write(text_format.MessageToString(self.dict, as_utf8=True))
+
+  def write_json(self, path):
+    print(f'Writing JSON to {path}')
+    # Ensure entries are sorted on write.
+    entries = sorted(self.dict.entries, key=lambda entry: entry.traditional)
+    dict_entries = [json_format.MessageToDict(entry) for entry in entries]
+    with io.open(path, "w") as f:
+      json.dump(dict_entries, f)
 
   def _build_index(self):
     self._word_index = {}
