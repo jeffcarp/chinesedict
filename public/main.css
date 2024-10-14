@@ -1,3 +1,8 @@
+:root {
+  --accent-color: #0068ee;
+  --light-color: #cfe2ff;
+}
+
 html, body {
   font-family: Arial;
   font-size: 16px;
@@ -31,7 +36,7 @@ header {
 header h1 {
   font-size: 1.3rem;
   margin: 0;
-  padding: 8px 0;
+  padding: 12px 0;
 }
 header h1 a {
   text-decoration: none;
@@ -51,6 +56,10 @@ header nav ul {
 }
 header nav ul li {
   padding: 1rem;
+}
+header nav span a {
+  color: var(--accent-color);
+  font-size: 0.9em;
 }
 input[name=q] {
   box-sizing: border-box;
@@ -114,9 +123,9 @@ input[name=q] {
   flex: 1;
 }
 .word-page section {
-	border-top: solid 1px #ccc;
-	margin-top: 2em;
-	padding-top: 2em;
+	border-top: solid 1px #ddd;
+	margin-top: 1.5em;
+	padding-top: 1.5em;
 }
 .word-page h3 {
 	margin-top: 0;
@@ -127,6 +136,11 @@ input[name=q] {
 }
 .word-page .definitions ol li {
 	margin-bottom: 0.5em;
+}
+@media (prefers-color-scheme: dark) {
+  .word-page section {
+    border-top: solid 1px #777;
+  }
 }
 
 #results h4 {
@@ -236,6 +250,43 @@ ul.word-list > li {
 .word ruby rt {
   user-select: none;
 }
+
+/* NEW WORD CSS */
+.word-page-chars {
+}
+.word-page-chars .char-pinyin {
+  text-align: center;
+}
+.word-page-chars .word-char-col {
+  display: inline-block;
+}
+.word-page-chars .word-char {
+  border-bottom: solid 1px #ddd;
+  font-size: 4em;
+  margin-bottom: 0.2em;
+  padding-bottom: 0.2em;
+}
+.word-page-chars .word-char a {
+  color: #333;
+  text-decoration: none;
+}
+.word-page-chars .word-char-alt {
+  font-size: 2em;
+  color: #aaa;
+  font-weight: lighter;
+  text-align: center;
+}
+@media (prefers-color-scheme: dark) {
+  .word-page-chars .word-char a {
+    color: white;
+  }
+  .word-page-chars .word-char-alt {
+    color: #aaa;
+  }
+}
+
+
+
 #segments {
   padding: 16px;
 }
@@ -275,4 +326,17 @@ footer {
   border-top: solid 1px #;
   font-size: 0.75rem;
   color: #888;
+}
+
+.tags {
+  margin-top: 2em;
+}
+.tags a.tag {
+  display: inline-block;
+  background-color: var(--light-color);
+  padding: 8px;
+  margin-right: 4px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #666;
 }

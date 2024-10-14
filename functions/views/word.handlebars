@@ -1,35 +1,34 @@
 <div class="word-page">
   <div class="word-info">
     <div class="column">
-      <h1 class="characters">
-        <ruby>
+
+      <div class="word-page-chars">
+
+        <div class="word-main">
           {{#each chars}}
-            <span><a href="/word/{{this.simplified}}">{{this.simplified}}</a></span>
-            <rt>{{ this.pinyin }}</rt>
+            <span class="word-char-col">
+
+              <div class="char-pinyin">{{ this.pinyin }}</div>
+
+              <!-- TODO: change layout so word is highlightable -->
+              <div class="word-char">
+                <a href="/word/{{this.simplified}}">{{this.simplified}}</a>
+              </div>
+
+              <div class="word-char-alt">
+                <span>{{ this.traditional}}</span>
+              </div>
+            </span>
           {{/each}}
-        </ruby>
-      </h1>
+        </div>
 
-      <p>(traditional: {{ entry.traditional }})</p>
+      </div>
 
-    <section>
-      <h3>Tags</h3>
-      <ul>
-      {{#each entry.tags}}
-        <li><a href="/tag/{{this}}">{{this}}</a></li>
-      {{/each}}
-      </ul>
-    </section>
-
-    <section>
-      <h3>Resources</h3>
-
-      <ul>
-        <li><a href="https://en.wiktionary.org/wiki/{{ entry.simplified }}">Wiktionary: {{ entry.simplified }}</a></li>
-        <li><a href="https://www.mdbg.net/chinese/dictionary?wdqb={{ entry.simplified }}">MDBG: {{ entry.simplified }}</a></li>
-        <li>Examples with {{ entry.simplified }} on <a href="https://tatoeba.org/en/sentences/search?from=cmn&query={{ entry.simplified }}&to=eng">Tatoeba</a></li>
-      </ul>
-    </section>
+      <div class="tags">
+        {{#each entry.tags}}
+          <a class="tag" href="/tag/{{this}}">{{this}}</a>
+        {{/each}}
+      </div>
 
     </div>
     <div class="column">
@@ -50,6 +49,34 @@
       </div>
     </div>
   </div>
+
+  {{#if this.charEntries}}
+    <section>
+      <h3>Characters</h3>
+
+      <ul class="char-entries">
+        {{#each charEntries}}
+          <li>
+            {{ this.simplified }} ({{ this.traditional }}):
+            {{#each this.definitions}}
+              {{ this.definition ~}}
+              {{~#unless @last~}}; {{~/unless}}
+            {{/each}}
+          </li>
+        {{/each}}
+      </ul>
+    </section>
+  {{/if}}
+
+  <section>
+    <h3>Resources</h3>
+
+    <ul>
+      <li><a href="https://en.wiktionary.org/wiki/{{ entry.simplified }}">Wiktionary: {{ entry.simplified }}</a></li>
+      <li><a href="https://www.mdbg.net/chinese/dictionary?wdqb={{ entry.simplified }}">MDBG: {{ entry.simplified }}</a></li>
+      <li>Examples with {{ entry.simplified }} on <a href="https://tatoeba.org/en/sentences/search?from=cmn&query={{ entry.simplified }}&to=eng">Tatoeba</a></li>
+    </ul>
+  </section>
 
 
   <section>

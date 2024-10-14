@@ -12,7 +12,7 @@ const fs  = require('fs');
 
 // const protobuf = require('protocol-buffers')
 
-import { Dict } from "./dict";
+import { Dict, Entry } from "./dict";
 // import { Dictionary } from "./dictionary"; // Requires Closure compiler :/
 
 import {onRequest} from "firebase-functions/v2/https";
@@ -53,22 +53,41 @@ app.get('/word/:word', cacheIt, (req: any, res: any) => {
   const entry = dict.findWord(req.params.word);
   if (entry) {
     try {
-      const chars: { simplified?: string, pinyin?: string }[] = [];
+      const chars: {
+        simplified?: string,
+        traditional?: string,
+        pinyin?: string,
+      }[] = [];
       for (const simpChar of entry.simplified.split('')) {
         chars.push({
           simplified: simpChar,
         })
       }
+      entry.traditional.split('').forEach((tradChar, i: number) => {
+        chars[i].traditional = tradChar;
+      })
       entry.pinyin.split(' ').forEach((pinyinChar, i: number) => {
         chars[i].pinyin = pinyinChar;
       })
 
       entry.tags = entry.tags.filter((t) => t != 'cedict')
 
+      // Find entries for each character.
+      const charEntries: Entry[] = [];
+      if (chars.length > 1) {
+        chars.forEach(character => {
+          if (character.simplified) {
+            const charEntry = dict.findWord(character.simplified);
+            if (charEntry) charEntries.push(charEntry);
+          }
+        })
+      }
+
       res.render('word', {
           title: entry.simplified,
           chars: chars,
           entry: entry,
+          charEntries: charEntries,
       });
     } catch (error) {
         console.error("Error rendering email:", error);

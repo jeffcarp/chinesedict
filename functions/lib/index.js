@@ -49,14 +49,29 @@ app.get('/word/:word', cacheIt, (req, res) => {
                     simplified: simpChar,
                 });
             }
+            entry.traditional.split('').forEach((tradChar, i) => {
+                chars[i].traditional = tradChar;
+            });
             entry.pinyin.split(' ').forEach((pinyinChar, i) => {
                 chars[i].pinyin = pinyinChar;
             });
             entry.tags = entry.tags.filter((t) => t != 'cedict');
+            // Find entries for each character.
+            const charEntries = [];
+            if (chars.length > 1) {
+                chars.forEach(character => {
+                    if (character.simplified) {
+                        const charEntry = dict.findWord(character.simplified);
+                        if (charEntry)
+                            charEntries.push(charEntry);
+                    }
+                });
+            }
             res.render('word', {
                 title: entry.simplified,
                 chars: chars,
                 entry: entry,
+                charEntries: charEntries,
             });
         }
         catch (error) {
