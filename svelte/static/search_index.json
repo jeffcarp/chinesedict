@@ -1,0 +1,196 @@
+[
+    {
+        "traditional": "一枝獨秀",
+        "simplified": "一枝独秀",
+        "pinyin": ["yī", "zhī", "dú", "xiù"],
+        "definitions": [
+            {"definition": "lit. only one branch of the tree is thriving (idiom)"},
+            {"definition": "fig. to be in a league of one's own"},
+            {"definition": "outstanding"}
+        ]
+    },
+    {
+        "traditional": "一心一意",
+        "simplified": "一心一意", 
+        "pinyin": ["yī", "xīn", "yī", "yì"],
+        "characters": ["one", "heart", "one", "mind"],
+        "definitions": [
+            {"definition": "wholeheartedly"},
+            {"definition": "with single-minded devotion"}
+        ]
+    },
+    {
+        "traditional": "半信半疑",
+        "simplified": "半信半疑",
+        "pinyin": ["bàn", "xìn", "bàn", "yí"],
+        "characters": ["half", "believe", "half", "doubt"],
+        "definitions": [
+            {
+                "definition": "half believe, half doubt",
+                "example": {
+                    "example": "我对他说的话半信半疑",
+                    "pinyin": ["wǒ", "duì", "tā", "shuō", "de", "huà", "bàn", "xìn", "bàn", "yí"],
+                    "translation": "I half believed and half doubted what he said"
+                }
+            },
+            {
+                "definition": "skeptical",
+                "example": {
+                    "example": "我们对这个计划很半信半疑",
+                    "pinyin": ["wǒ", "men", "duì", "zhè", "gè", "jì", "huà", "hěn", "bàn", "xìn", "bàn", "yí"], 
+                    "translation": "We are skeptical about this plan"
+                }
+            },
+            {
+                "definition": "dubious",
+                "example": {
+                    "example": "这个理由让人半信半疑",
+                    "pinyin": ["zhè", "gè", "lǐ", "yóu", "ràng", "rén", "bàn", "xìn", "bàn", "yí"],
+                    "translation": "This reason seems dubious"
+                }
+            }
+        ]
+    },
+    {
+        "traditional": "四面八方",
+        "simplified": "四面八方",
+        "pinyin": ["sì", "miàn", "bā", "fāng"],
+        "definitions": [
+            {"definition": "in all directions"},
+            {"definition": "all around"},
+            {"definition": "far and wide"}
+        ]
+    },
+    {
+        "traditional": "守株待兔",
+        "simplified": "守株待兔",
+        "pinyin": ["shǒu", "zhū", "dài", "tù"],
+        "definitions": [
+            {"definition": "to wait idly for opportunities"},
+            {"definition": "to trust to chance"},
+            {"definition": "literal: to guard a tree stump waiting for rabbits"}
+        ]
+    },
+    {
+        "traditional": "馬馬虎虎",
+        "simplified": "马马虎虎",
+        "pinyin": ["mǎ", "mǎ", "hū", "hū"],
+        "definitions": [
+            {"definition": "careless"},
+            {"definition": "casual"},
+            {"definition": "so-so"}
+        ]
+    },
+    {
+        "traditional": "畫蛇添足",
+        "simplified": "画蛇添足",
+        "pinyin": ["huà", "shé", "tiān", "zú"],
+        "characters": ["draw", "snake", "add", "feet"],
+        "definitions": [
+            {"definition": "to draw legs on a snake (idiom)"},
+            {"definition": "to ruin something by adding unnecessary details"},
+            {"definition": "gilding the lily"}
+        ]
+    },
+    {
+        "traditional": "望眼欲穿",
+        "simplified": "望眼欲穿",
+        "pinyin": ["wàng", "yǎn", "yù", "chuān"],
+        "characters": ["look", "eye", "want", "pierce"],
+        "definitions": [
+            {"definition": "to eagerly await"},
+            {"definition": "to wait anxiously"},
+            {"definition": "literal: to look until your eyes wear through"}
+        ]
+    },
+    {
+        "traditional": "千方百計",
+        "simplified": "千方百计",
+        "pinyin": ["qiān", "fāng", "bǎi", "jì"],
+        "definitions": [
+            {"definition": "by every possible means"},
+            {"definition": "to try everything"},
+            {"definition": "to leave no stone unturned"}
+        ]
+    },
+    {
+        "traditional": "自相矛盾",
+        "simplified": "自相矛盾",
+        "pinyin": ["zì", "xiāng", "máo", "dùn"],
+        "definitions": [
+            {"definition": "to contradict oneself"},
+            {"definition": "self-contradictory"},
+            {"definition": "inconsistent"}
+        ]
+    },
+    {
+        "traditional": "入鄉隨俗",
+        "simplified": "入乡随俗",
+        "pinyin": ["rù", "xiāng", "suí", "sú"],
+        "definitions": [
+            {"definition": "when in Rome, do as the Romans do"},
+            {"definition": "to follow local customs"},
+            {"definition": "to adapt to local traditions"}
+        ]
+    },
+    {
+        "traditional": "對牛彈琴",
+        "simplified": "对牛弹琴",
+        "pinyin": ["duì", "niú", "tán", "qín"],
+        "characters": ["to", "cow", "play", "lute"],
+        "definitions": [
+            {"definition": "playing the lute to a cow (idiom)"},
+            {"definition": "to talk to someone who cannot understand"},
+            {"definition": "wasting one's breath"}
+        ]
+    },
+    {
+        "traditional": "塞翁失馬",
+        "simplified": "塞翁失马",
+        "pinyin": ["sài", "wēng", "shī", "mǎ"],
+        "definitions": [
+            {"definition": "a blessing in disguise"},
+            {"definition": "misfortune may be an actual blessing"},
+            {"definition": "literal: the old man lost his horse (but it came back with another horse)"}
+        ]
+    },
+    {
+        "traditional": "我們",
+        "simplified": "我们", 
+        "pinyin": ["wǒ", "men"],
+        "definitions": [
+            {"definition": "we"},
+            {"definition": "us"}
+        ]
+    },
+    {
+        "traditional": "正在",
+        "simplified": "正在",
+        "pinyin": ["zhèng", "zài"],
+        "definitions": [
+            {"definition": "in the process of"},
+            {"definition": "currently"},
+            {"definition": "right now"}
+        ]
+    },
+    {
+        "traditional": "吃",
+        "simplified": "吃",
+        "pinyin": ["chī"],
+        "definitions": [
+            {"definition": "to eat"},
+            {"definition": "to consume"},
+            {"definition": "to take (medicine)"}
+        ]
+    },
+    {
+        "traditional": "飯",
+        "simplified": "饭",
+        "pinyin": ["fàn"],
+        "definitions": [
+            {"definition": "cooked rice"},
+            {"definition": "meal"},
+            {"definition": "food"}
+        ]
+    }
+]
