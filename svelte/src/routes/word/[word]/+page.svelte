@@ -3,7 +3,7 @@
     export let data;
 
     // Preprocess examples to create paired characters with their pinyin
-    const processedExamples = data.entry.examples.map(example => ({
+    const processedExamples = data.entry.examples?.map(example => ({
         ...example,
         pairs: example.example.split('').map((char) => {
             const isChinese = /[\u4e00-\u9fff]/.test(char);
@@ -15,7 +15,7 @@
                     .length] : ''
             };
         })
-    }));
+    })) ?? [];
 </script>
 
 <svelte:head>

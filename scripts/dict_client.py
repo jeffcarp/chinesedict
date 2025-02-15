@@ -38,6 +38,25 @@ class DictClient:
     # Ensure entries are sorted on write.
     entries = sorted(self.dict.entries, key=lambda entry: entry.traditional)
     dict_entries = [json_format.MessageToDict(entry) for entry in entries]
+    for entry in dict_entries:
+      entry['pinyin'] = entry['pinyin'].split(' ')
+    with io.open(path, "w") as f:
+      json.dump(dict_entries, f)
+
+  def write_search_index_json(self, path):
+    print(f'Writing search index JSON to {path}')
+    # Ensure entries are sorted on write.
+    entries = sorted(self.dict.entries, key=lambda entry: entry.traditional)
+    dict_entries = [
+      {
+        'traditional': entry.traditional,
+        'simplified': entry.simplified,
+        'pinyin': entry.pinyin.split(' '),
+        'definitions': [json_format.MessageToDict(definition) for definition in entry.definitions],
+      }
+      for entry in entries
+      if entry.percentile > 5
+    ]
     with io.open(path, "w") as f:
       json.dump(dict_entries, f)
 
