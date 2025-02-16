@@ -24,7 +24,9 @@ class DictClient:
 
     print(f'Loaded dict at {RELEASE_PATH}')
     print(f'with {len(self.dict.entries)} entries.')
+    print('Building index...')
     self._build_index()
+    print('Index built.')
 
   def write(self):
     print(f'Writing {len(self.dict.entries)} to {RELEASE_PATH}.')
@@ -53,10 +55,12 @@ class DictClient:
         'simplified': entry.simplified,
         'pinyin': entry.pinyin.split(' '),
         'definitions': [json_format.MessageToDict(definition) for definition in entry.definitions],
+        'percentile': entry.percentile,
       }
       for entry in entries
-      if entry.percentile > 5
+      if hasattr(entry, 'percentile') and entry.percentile > 5
     ]
+    print(f'Writing {len(dict_entries)} search index entries to {path}')
     with io.open(path, "w") as f:
       json.dump(dict_entries, f)
 

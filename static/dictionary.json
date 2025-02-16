@@ -1,0 +1,422 @@
+[
+    {
+        "traditional": "一枝獨秀",
+        "simplified": "一枝独秀",
+        "pinyin": ["yī", "zhī", "dú", "xiù"],
+        "characters": ["one", "branch", "alone", "flourish"],
+        "tags": ["HSK1", "HSK2"],
+        "definitions": [
+            {"definition": "lit. only one branch of the tree is thriving (idiom)"},
+            {"definition": "fig. to be in a league of one's own"},
+            {"definition": "outstanding"}
+        ],
+        "examples": [
+            {
+                "example": "他一枝独秀，成为了班上最优秀的学生",
+                "pinyin": ["tā", "yī", "zhī", "dú", "xiù", "chéng", "wéi", "le", "bān", "shàng", "zuì", "yōu", "xiù", "de", "xué", "shēng"],
+                "translation": "He stands out as the most outstanding student in the class"
+            },
+            {
+                "example": "在这个领域她一枝独秀",
+                "pinyin": ["zài", "zhè", "gè", "lǐng", "yù", "tā", "yī", "zhī", "dú", "xiù"],
+                "translation": "She is unrivaled in this field"
+            }
+        ]
+    },
+    {
+        "traditional": "一心一意",
+        "simplified": "一心一意", 
+        "pinyin": ["yī", "xīn", "yī", "yì"],
+        "characters": ["one", "heart", "one", "mind"],
+        "tags": ["chengyu"],
+        "definitions": [
+            {"definition": "wholeheartedly"},
+            {"definition": "with single-minded devotion"}
+        ],
+        "examples": [
+            {
+                "example": "他一心一意想要考上大学",
+                "pinyin": ["tā", "yī", "xīn", "yī", "yì", "xiǎng", "yào", "kǎo", "shàng", "dà", "xué"],
+                "translation": "He is wholeheartedly focused on getting into university"
+            },
+            {
+                "example": "她一心一意地爱着他",
+                "pinyin": ["tā", "yī", "xīn", "yī", "yì", "de", "ài", "zhe", "tā"],
+                "translation": "She loves him with single-minded devotion"
+            }
+        ]
+    },
+    {
+        "traditional": "半信半疑",
+        "simplified": "半信半疑",
+        "pinyin": ["bàn", "xìn", "bàn", "yí"],
+        "characters": ["half", "believe", "half", "doubt"],
+        "tags": ["HSK1"],
+        "definitions": [
+            {
+                "definition": "half believe, half doubt",
+                "example": {
+                    "example": "我对他说的话半信半疑",
+                    "pinyin": ["wǒ", "duì", "tā", "shuō", "de", "huà", "bàn", "xìn", "bàn", "yí"],
+                    "translation": "I half believed and half doubted what he said"
+                }
+            },
+            {
+                "definition": "skeptical",
+                "example": {
+                    "example": "我们对这个计划很半信半疑",
+                    "pinyin": ["wǒ", "men", "duì", "zhè", "gè", "jì", "huà", "hěn", "bàn", "xìn", "bàn", "yí"], 
+                    "translation": "We are skeptical about this plan"
+                }
+            },
+            {
+                "definition": "dubious",
+                "example": {
+                    "example": "这个理由让人半信半疑",
+                    "pinyin": ["zhè", "gè", "lǐ", "yóu", "ràng", "rén", "bàn", "xìn", "bàn", "yí"],
+                    "translation": "This reason seems dubious"
+                }
+            }
+        ],
+        "examples": [
+            {
+                "example": "听到这个消息时，我半信半疑",
+                "pinyin": ["tīng", "dào", "zhè", "gè", "xiāo", "xī", "shí", "wǒ", "bàn", "xìn", "bàn", "yí"],
+                "translation": "When I heard this news, I was skeptical"
+            },
+            {
+                "example": "他对这个说法持半信半疑的态度",
+                "pinyin": ["tā", "duì", "zhè", "gè", "shuō", "fǎ", "chí", "bàn", "xìn", "bàn", "yí", "de", "tài", "dù"],
+                "translation": "He had a dubious attitude towards this statement"
+            }
+        ]
+    },
+    {
+        "traditional": "四面八方",
+        "simplified": "四面八方",
+        "pinyin": ["sì", "miàn", "bā", "fāng"],
+        "tags": [],
+        "definitions": [
+            {"definition": "in all directions"},
+            {"definition": "all around"},
+            {"definition": "far and wide"}
+        ],
+        "examples": [
+            {
+                "example": "游客从四面八方赶来参加节日庆典",
+                "pinyin": ["yóu", "kè", "cóng", "sì", "miàn", "bā", "fāng", "gǎn", "lái", "cān", "jiā", "jié", "rì", "qìng", "diǎn"],
+                "translation": "Tourists came from all directions to attend the festival"
+            },
+            {
+                "example": "这个消息传遍四面八方",
+                "pinyin": ["zhè", "gè", "xiāo", "xī", "chuán", "biàn", "sì", "miàn", "bā", "fāng"],
+                "translation": "The news spread far and wide"
+            }
+        ]
+    },
+    {
+        "traditional": "守株待兔",
+        "simplified": "守株待兔",
+        "pinyin": ["shǒu", "zhū", "dài", "tù"],
+        "tags": ["HSK1"],
+        "definitions": [
+            {"definition": "to wait idly for opportunities"},
+            {"definition": "to trust to chance"},
+            {"definition": "literal: to guard a tree stump waiting for rabbits"}
+        ],
+        "examples": [
+            {
+                "example": "找工作不能守株待兔",
+                "pinyin": ["zhǎo", "gōng", "zuò", "bù", "néng", "shǒu", "zhū", "dài", "tù"],
+                "translation": "You can't just wait idly for job opportunities to come to you"
+            },
+            {
+                "example": "他整天守株待兔，期待好运降临",
+                "pinyin": ["tā", "zhěng", "tiān", "shǒu", "zhū", "dài", "tù", "qī", "dài", "hǎo", "yùn", "jiàng", "lín"],
+                "translation": "He spends all day waiting for luck to come to him"
+            }
+        ]
+    },
+    {
+        "traditional": "馬馬虎虎",
+        "simplified": "马马虎虎",
+        "pinyin": ["mǎ", "mǎ", "hū", "hū"],
+        "tags": [],
+        "definitions": [
+            {"definition": "careless"},
+            {"definition": "casual"},
+            {"definition": "so-so"}
+        ],
+        "examples": [
+            {
+                "example": "这份工作做得很马马虎虎",
+                "pinyin": ["zhè", "fèn", "gōng", "zuò", "zuò", "de", "hěn", "mǎ", "mǎ", "hū", "hū"],
+                "translation": "This work was done carelessly"
+            },
+            {
+                "example": "他的汉语说得马马虎虎",
+                "pinyin": ["tā", "de", "hàn", "yǔ", "shuō", "de", "mǎ", "mǎ", "hū", "hū"],
+                "translation": "His Chinese is just so-so"
+            }
+        ]
+    },
+    {
+        "traditional": "畫蛇添足",
+        "simplified": "画蛇添足",
+        "pinyin": ["huà", "shé", "tiān", "zú"],
+        "tags": ["HSK1"],
+        "characters": ["draw", "snake", "add", "feet"],
+        "definitions": [
+            {"definition": "to draw legs on a snake (idiom)"},
+            {"definition": "to ruin something by adding unnecessary details"},
+            {"definition": "gilding the lily"}
+        ],
+        "examples": [
+            {
+                "example": "这段话已经很完美了，再加什么都是画蛇添足",
+                "pinyin": ["zhè", "duàn", "huà", "yǐ", "jīng", "hěn", "wán", "měi", "le", "zài", "jiā", "shén", "me", "dōu", "shì", "huà", "shé", "tiān", "zú"],
+                "translation": "This passage is already perfect, adding anything would be gilding the lily"
+            },
+            {
+                "example": "不要画蛇添足，把事情搞得更复杂",
+                "pinyin": ["bù", "yào", "huà", "shé", "tiān", "zú", "bǎ", "shì", "qíng", "gǎo", "de", "gèng", "fù", "zá"],
+                "translation": "Don't complicate things by adding unnecessary details"
+            }
+        ]
+    },
+    {
+        "traditional": "望眼欲穿",
+        "simplified": "望眼欲穿",
+        "pinyin": ["wàng", "yǎn", "yù", "chuān"],
+        "tags": [],
+        "characters": ["look", "eye", "want", "pierce"],
+        "definitions": [
+            {"definition": "to eagerly await"},
+            {"definition": "to wait anxiously"},
+            {"definition": "literal: to look until your eyes wear through"}
+        ],
+        "examples": [
+            {
+                "example": "妈妈望眼欲穿地等待儿子回家",
+                "pinyin": ["mā", "ma", "wàng", "yǎn", "yù", "chuān", "de", "děng", "dài", "ér", "zi", "huí", "jiā"],
+                "translation": "The mother anxiously waited for her son to return home"
+            },
+            {
+                "example": "我望眼欲穿地等待考试结果",
+                "pinyin": ["wǒ", "wàng", "yǎn", "yù", "chuān", "de", "děng", "dài", "kǎo", "shì", "jié", "guǒ"],
+                "translation": "I eagerly awaited the exam results"
+            }
+        ]
+    },
+    {
+        "traditional": "千方百計",
+        "simplified": "千方百计",
+        "pinyin": ["qiān", "fāng", "bǎi", "jì"],
+        "tags": ["HSK1"],
+        "definitions": [
+            {"definition": "by every possible means"},
+            {"definition": "to try everything"},
+            {"definition": "to leave no stone unturned"}
+        ],
+        "examples": [
+            {
+                "example": "他千方百计想要见到她",
+                "pinyin": ["tā", "qiān", "fāng", "bǎi", "jì", "xiǎng", "yào", "jiàn", "dào", "tā"],
+                "translation": "He tried everything possible to meet her"
+            },
+            {
+                "example": "我们要千方百计解决这个问题",
+                "pinyin": ["wǒ", "men", "yào", "qiān", "fāng", "bǎi", "jì", "jiě", "jué", "zhè", "gè", "wèn", "tí"],
+                "translation": "We must leave no stone unturned to solve this problem"
+            }
+        ]
+    },
+    {
+        "traditional": "自相矛盾",
+        "simplified": "自相矛盾",
+        "pinyin": ["zì", "xiāng", "máo", "dùn"],
+        "tags": [],
+        "definitions": [
+            {"definition": "to contradict oneself"},
+            {"definition": "self-contradictory"},
+            {"definition": "inconsistent"}
+        ],
+        "examples": [
+            {
+                "example": "他的说法前后自相矛盾",
+                "pinyin": ["tā", "de", "shuō", "fǎ", "qián", "hòu", "zì", "xiāng", "máo", "dùn"],
+                "translation": "His statements contradict themselves"
+            },
+            {
+                "example": "这个理论存在自相矛盾的地方",
+                "pinyin": ["zhè", "gè", "lǐ", "lùn", "cún", "zài", "zì", "xiāng", "máo", "dùn", "de", "dì", "fāng"],
+                "translation": "This theory contains inconsistencies"
+            }
+        ]
+    },
+    {
+        "traditional": "入鄉隨俗",
+        "simplified": "入乡随俗",
+        "pinyin": ["rù", "xiāng", "suí", "sú"],
+        "tags": ["HSK1"],
+        "definitions": [
+            {"definition": "when in Rome, do as the Romans do"},
+            {"definition": "to follow local customs"},
+            {"definition": "to adapt to local traditions"}
+        ],
+        "examples": [
+            {
+                "example": "到了外国要入乡随俗",
+                "pinyin": ["dào", "le", "wài", "guó", "yào", "rù", "xiāng", "suí", "sú"],
+                "translation": "When in a foreign country, you should follow local customs"
+            },
+            {
+                "example": "她很快就学会了入乡随俗",
+                "pinyin": ["tā", "hěn", "kuài", "jiù", "xué", "huì", "le", "rù", "xiāng", "suí", "sú"],
+                "translation": "She quickly learned to adapt to local traditions"
+            }
+        ]
+    },
+    {
+        "traditional": "對牛彈琴",
+        "simplified": "对牛弹琴",
+        "pinyin": ["duì", "niú", "tán", "qín"],
+        "tags": [],
+        "characters": ["to", "cow", "play", "lute"],
+        "definitions": [
+            {"definition": "playing the lute to a cow (idiom)"},
+            {"definition": "to talk to someone who cannot understand"},
+            {"definition": "wasting one's breath"}
+        ],
+        "examples": [
+            {
+                "example": "跟他解释这么复杂的概念简直是对牛弹琴",
+                "pinyin": ["gēn", "tā", "jiě", "shì", "zhè", "me", "fù", "zá", "de", "gài", "niàn", "jiǎn", "zhí", "shì", "duì", "niú", "tán", "qín"],
+                "translation": "Trying to explain such complex concepts to him is like playing the lute to a cow"
+            },
+            {
+                "example": "别对牛弹琴了，他根本听不懂",
+                "pinyin": ["bié", "duì", "niú", "tán", "qín", "le", "tā", "gēn", "běn", "tīng", "bù", "dǒng"],
+                "translation": "Stop wasting your breath, he simply can't understand"
+            }
+        ]
+    },
+    {
+        "traditional": "塞翁失馬",
+        "simplified": "塞翁失马",
+        "pinyin": ["sài", "wēng", "shī", "mǎ"],
+        "tags": ["HSK1"],
+        "definitions": [
+            {"definition": "a blessing in disguise"},
+            {"definition": "misfortune may be an actual blessing"},
+            {"definition": "literal: the old man lost his horse (but it came back with another horse)"}
+        ],
+        "examples": [
+            {
+                "example": "失业看似不幸，但也许是塞翁失马",
+                "pinyin": ["shī", "yè", "kàn", "sì", "bù", "xìng", "dàn", "yě", "xǔ", "shì", "sài", "wēng", "shī", "mǎ"],
+                "translation": "Losing your job may seem unfortunate, but it could be a blessing in disguise"
+            },
+            {
+                "example": "这次失败可能是塞翁失马，焉知非福",
+                "pinyin": ["zhè", "cì", "shī", "bài", "kě", "néng", "shì", "sài", "wēng", "shī", "mǎ", "yān", "zhī", "fēi", "fú"],
+                "translation": "This failure might be like the old man losing his horse - who knows if it's not actually good fortune"
+            }
+        ]
+    },
+    {
+        "traditional": "我們",
+        "simplified": "我们",
+        "pinyin": ["wǒ", "men"],
+        "characters": ["I/me", "plural marker"],
+        "tags": ["HSK1"],
+        "definitions": [
+            {"definition": "we"},
+            {"definition": "us"}
+        ],
+        "examples": [
+            {
+                "example": "我们是好朋友",
+                "pinyin": ["wǒ", "men", "shì", "hǎo", "péng", "yǒu"],
+                "translation": "We are good friends"
+            },
+            {
+                "example": "请给我们两杯咖啡",
+                "pinyin": ["qǐng", "gěi", "wǒ", "men", "liǎng", "bēi", "kā", "fēi"],
+                "translation": "Please give us two cups of coffee"
+            }
+        ]
+    },
+    {
+        "traditional": "正在",
+        "simplified": "正在",
+        "pinyin": ["zhèng", "zài"],
+        "characters": ["just", "in process of"],
+        "tags": ["HSK1"],
+        "definitions": [
+            {"definition": "in the process of"},
+            {"definition": "currently"},
+            {"definition": "right now"}
+        ],
+        "examples": [
+            {
+                "example": "他正在看书",
+                "pinyin": ["tā", "zhèng", "zài", "kàn", "shū"],
+                "translation": "He is reading a book"
+            },
+            {
+                "example": "我正在做饭",
+                "pinyin": ["wǒ", "zhèng", "zài", "zuò", "fàn"],
+                "translation": "I am cooking"
+            }
+        ]
+    },
+    {
+        "traditional": "吃",
+        "simplified": "吃",
+        "pinyin": ["chī"],
+        "characters": ["eat"],
+        "tags": ["HSK1"],
+        "definitions": [
+            {"definition": "to eat"},
+            {"definition": "to consume"},
+            {"definition": "to take (medicine)"}
+        ],
+        "examples": [
+            {
+                "example": "我想吃苹果",
+                "pinyin": ["wǒ", "xiǎng", "chī", "píng", "guǒ"],
+                "translation": "I want to eat an apple"
+            },
+            {
+                "example": "你吃早饭了吗？",
+                "pinyin": ["nǐ", "chī", "zǎo", "fàn", "le", "ma"],
+                "translation": "Have you eaten breakfast?"
+            }
+        ]
+    },
+    {
+        "traditional": "飯",
+        "simplified": "饭",
+        "pinyin": ["fàn"],
+        "characters": ["rice", "meal"],
+        "tags": ["HSK1"],
+        "definitions": [
+            {"definition": "cooked rice"},
+            {"definition": "meal"},
+            {"definition": "food"}
+        ],
+        "examples": [
+            {
+                "example": "我们去吃饭吧",
+                "pinyin": ["wǒ", "men", "qù", "chī", "fàn", "ba"],
+                "translation": "Let's go eat"
+            },
+            {
+                "example": "饭做好了",
+                "pinyin": ["fàn", "zuò", "hǎo", "le"],
+                "translation": "The meal is ready"
+            }
+        ]
+    }
+]

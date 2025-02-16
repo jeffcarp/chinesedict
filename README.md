@@ -2,14 +2,40 @@
 
 ## Overview
 
-ChineseDict aims to be a fast Chinese-English dictionary. Its main goal is providing instant-search to enable looking up words rapidly during discussion or watching a video.
+ChineseDict aims to be a fast Chinese-English dictionary. Its main goal is
+providing instant-search to enable looking up words rapidly during discussion
+or watching a video.
 
 ## Development
 
-Clone the repo and run:
+Tasks:
 
+- [x] Load full dictionary with real data
+    - [x] Adapt current dictionary to new format
+- [x] Implement word page (only to parity)
+- [x] Implement random page
+- [ ] Implement full search
+    - [x] simplified
+    - [x] pinyin
+    - [x] definitions
+    - [ ] segmentation
+- [x] Implement lists (requires indexes)
+- [ ] Add GA (disable when running locally)
+
+## Developing
+
+```bash
+npm run dev
 ```
-make serve
+
+## Deploying
+
+```bash
+# Build for prod
+npm run build
+
+# Preview prod
+npm run preview
 ```
 
 ## Acknowledgements

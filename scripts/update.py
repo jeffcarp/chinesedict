@@ -20,7 +20,7 @@ CEDICT_PATH = './data/cedict_1_0_ts_utf-8_mdbg.txt'
 CHENGYU_PATH = './data/chengyu.txt'
 HSK_PATH = './data/hsk.tsv'
 TATOEBA_PATH = './data/tatoeba_examples.txt'
-
+PERCENTILE_PATH = './data/most_common_chinese_words_v7.csv'
 
 def update_cedict(client):
   print('Reading CEDICT...')
@@ -99,6 +99,12 @@ def add_example_sentences(client):
           client.dict.entries[entry_index].examples.append(line)
 
 
+def update_percentile(
+    client: dict_client.DictClient,
+    entry: dictionary_pb2.Entry,
+):
+  print('Updating percentile...')
+
 def main(args: argparse.Namespace):
   client = dict_client.DictClient()
 
@@ -166,12 +172,21 @@ def main(args: argparse.Namespace):
     for ex in entry.examples_full:
       entry.examples.append(ex)
       #del entry.examples_full[0]
-  '''
 
   for index, entry in enumerate(tqdm.tqdm(client.dict.entries)):
     print('ENTRY:', entry)
     while entry.examples_full:
       del entry.examples_full[0]
+  '''
+
+  # Update percentile for all entries.
+  with open(PERCENTILE_PATH, 'r+') as f:
+    lines = f.readlines()
+    for line in tqdm.tqdm(lines[1:]):
+      rank, word, occurrences, percentile = line.split(',')
+      if client.word_exists(word):
+        entry = client.dict.entries[client.word_index(word)]
+        entry.percentile = int(float(percentile) * 100)
 
   client.write()
 
