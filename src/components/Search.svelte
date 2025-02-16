@@ -79,16 +79,12 @@ function segmentChinese(text: string): string[] {
 // Load dictionary on component mount
 onMount(async () => {
   try {
-    const response = await fetch('/search-index.json');
-    const data = await response.json();
-    console.log('data', data);
-    searchIndex.set(data);
-    
     // Build the trie from the dictionary
     // pinyinTrie = buildPinyinTrie(data.documents);
     
     // Load the pre-built MiniSearch index
-    miniSearch = MiniSearch.loadJSON(data, {
+    const data = await getSearchIndex();
+    miniSearch = new MiniSearch({
       fields: ['simplified', 'traditional', 'pinyin', 'pinyinNormalized', 'pinyinJoined', 'definitions'],
       storeFields: ['simplified', 'traditional', 'pinyin', 'definitions', 'percentile'],
       searchOptions: {
@@ -118,6 +114,7 @@ onMount(async () => {
         return document[fieldName];
       }
     });
+    miniSearch.addAll(data.map((doc, index) => ({ ...doc, id: index })));
     
     searchIndexLoading.set(false);
   } catch (error) {
