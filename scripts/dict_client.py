@@ -58,7 +58,7 @@ class DictClient:
         'percentile': entry.percentile,
       }
       for entry in entries
-      if hasattr(entry, 'percentile') and entry.percentile > 5
+      if hasattr(entry, 'percentile') and entry.percentile > 1
     ]
     print(f'Writing {len(dict_entries)} search index entries to {path}')
     with io.open(path, "w") as f:

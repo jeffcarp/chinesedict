@@ -89,12 +89,12 @@ onMount(async () => {
       storeFields: ['simplified', 'traditional', 'pinyin', 'definitions', 'percentile'],
       searchOptions: {
         boost: {
-          percentile: 3,
-          simplified: 2,
-          traditional: 2,
-          pinyin: 1.5,
-          pinyinNormalized: 1.5,
-          pinyinJoined: 1.5,
+          percentile: 10,
+          simplified: 5,
+          traditional: 5,
+          pinyin: 2,
+          pinyinNormalized: 2,
+          pinyinJoined: 2,
           definitions: 1,
         },
         fuzzy: 0.2
@@ -155,7 +155,11 @@ function handleSearch() {
 
   const results = miniSearch.search(query, {
     prefix: true,
-    fuzzy: 0.2
+    fuzzy: 0.2,
+    boost: {
+      percentile: 10,
+      simplified: 5
+    }
   }).slice(0, 20);
 
   searchResults.set(results);
