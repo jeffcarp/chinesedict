@@ -4,4 +4,4 @@ export default {
   content: ['./src/**/*.{html,js,svelte,ts}'],
 
   plugins: []
-} satisfies Config;
+} satisfies Config; 

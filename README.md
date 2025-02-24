@@ -19,8 +19,9 @@ Tasks:
     - [x] pinyin
     - [x] definitions
     - [ ] segmentation
-    - [ ] higher quality search, e.g. 爱好
+    - [x] higher quality search, e.g. 爱好
 - [x] Implement lists (requires indexes)
+- [ ] Improve backend loading performance
 - [ ] Add GA (disable when running locally)
 
 ## Developing

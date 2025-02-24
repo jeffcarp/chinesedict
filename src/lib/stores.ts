@@ -17,13 +17,14 @@ export const getDictionary = async () => {
         const response = await fetch(new URL('/full_dictionary.json', window.location.origin));
         const data = await response.json();
         */
-        const data = []
-        dictionary.set(data);
-        dictionaryLoading.set(false);
-        return data;
+        //const data = []
+        return []; // Not implemented, use search index instead.
     } else {
         try {
+            console.log('Loading dictionary on server...');
+            const start = Date.now();
             const data = await import('../../static/full_dictionary.json');
+            console.log('Dictionary loaded on server, took', Date.now() - start, 'ms');
             return data.default;
         } catch (e) {
             console.error('Failed to load dictionary on server:', e);

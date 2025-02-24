@@ -1,3 +1,7 @@
+<script>
+export const prerender = true;
+</script>
+
 <svelte:head>
     <title>About ChineseDict</title>
 </svelte:head>

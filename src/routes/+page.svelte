@@ -1,3 +1,6 @@
+<script>
+</script>
+
 <p class="text-lg font-bold mb-8">
     <b class="text-lg bg-yellow-100 dark:bg-yellow-900/30 decoration-2 decoration-yellow-400 dark:decoration-yellow-600 underline-offset-4 underline decoration-dashed">ChineseDict</b>
     is a quick Chinese-English dictionary.
@@ -14,7 +17,7 @@
 
 <h4>Segmentation</h4>
 
-<p>Multiple Chinese words to segment in real-time: <a href="/?q=我们正在吃饭">我们正在吃饭</a></p>
+<p>Multiple Chinese words to segment in real-time: <a href="/?q=我们正在吃饭" data-sveltekit-reload>我们正在吃饭</a></p>
 
 <h4>Lists</h4>
 
