@@ -47,4 +47,14 @@
       Dictionary loaded: {!$dictionaryLoading}
     </div>
   </footer>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VF4JJW0F68"></script>
+  <script>
+    if (!window.location.origin.includes('localhost')) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JGWNGNWF35');
+    }
+  </script>
 </div>

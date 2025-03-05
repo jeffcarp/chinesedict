@@ -12,7 +12,7 @@
 
 <p>
     Words: <a href="/word/小狗">小狗</a>, <a href="/word/樱花">樱花</a> <br />
-    English words: <a href="/?q=news">news</a>
+    English words: <a href="/?q=news" data-sveltekit-reload>news</a>
 </p>
 
 <h4>Segmentation</h4>
