@@ -177,7 +177,6 @@ def main(args: argparse.Namespace):
     print('ENTRY:', entry)
     while entry.examples_full:
       del entry.examples_full[0]
-  '''
 
   # Update percentile for all entries.
   with open(PERCENTILE_PATH, 'r+') as f:
@@ -187,6 +186,12 @@ def main(args: argparse.Namespace):
       if client.word_exists(word):
         entry = client.dict.entries[client.word_index(word)]
         entry.percentile = int(float(percentile) * 100)
+  '''
+
+  # Delete cedict tag from all entries.
+  for index, entry in enumerate(tqdm.tqdm(client.dict.entries)):
+    if 'cedict' in entry.tags:
+      entry.tags.remove('cedict')
 
   client.write()
 
