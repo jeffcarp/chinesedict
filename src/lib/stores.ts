@@ -35,7 +35,7 @@ export const getDictionary = async () => {
 
 export const getSearchIndex = async () => {
     if (browser) {
-        const response = await fetch(new URL('/full_search_index.json.gz', window.location.origin));
+        const response = await fetch(new URL('/full_search_index.json', window.location.origin));
 
         // The browser should automatically decompress the content if the server sends the right headers
         const data = await response.json();
