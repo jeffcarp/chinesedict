@@ -1,24 +1,6 @@
 <script lang="ts">
     /** @type {import('./$types').PageData} */
     export let data;
-
-    // Preprocess examples to create paired characters with their pinyin
-    const processedExamples = []
-    /*
-    const processedExamples = data.entry.examples?.map(example => ({
-        ...example,
-        pairs: example.example.split('').map((char) => {
-            const isChinese = /[\u4e00-\u9fff]/.test(char);
-            return {
-                char,
-                pinyin: isChinese ? example.pinyin[example.example.slice(0, example.example.indexOf(char))
-                    .split('')
-                    .filter(c => /[\u4e00-\u9fff]/.test(c))
-                    .length] : ''
-            };
-        })
-    })) ?? [];
-     */
 </script>
 
 <svelte:head>
@@ -78,17 +60,9 @@
 {#if data.entry.examples && data.entry.examples.length > 0}
     <div class="my-8">
         <h3 class="text-2xl mb-6 font-bold">Examples</h3>
-        {#each processedExamples as example}
+        {#each data.entry.examples as example}
             <div class="mb-6">
-                <div class="text-2xl">
-                    <ruby>
-                        {#each example.pairs as pair}
-                            <span>{pair.char}</span>
-                            <rt class="text-xs text-gray-400">{pair.pinyin}</rt>
-                        {/each}
-                    </ruby>
-                </div>
-                <div class="text-gray-700 dark:text-gray-300">{example.translation}</div>
+                <div class="text-gray-700 dark:text-gray-300">{example.example}</div>
             </div>
         {/each}
     </div>
