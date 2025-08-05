@@ -13,7 +13,7 @@
       <li class="group me-7 last:me-0.5">
         <a href="/random">
           <span class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2">
-            Random
+            &#x1F340; Random
           </span>
         </a>
       </li>
@@ -21,7 +21,15 @@
       <li class="group me-7 last:me-0.5">
         <a href="/about">
           <span class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2">
-            About
+            &#x2753; About
+          </span>
+        </a>
+      </li>
+
+      <li class="group me-7 last:me-0.5">
+        <a href="https://github.com/jeffcarp/chinesedict/issues/new">
+          <span class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2">
+            &#x1F4DD; Feedback
           </span>
         </a>
       </li>

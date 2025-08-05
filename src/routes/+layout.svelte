@@ -1,5 +1,5 @@
 <script lang="ts">
-	import '../app.css';
+  import '../app.css';
   import Header from '../components/Header.svelte';
   import Search from '../components/Search.svelte';
   import { writable } from 'svelte/store';
@@ -7,7 +7,7 @@
   import { afterNavigate } from '$app/navigation';
   import { dictionary, dictionaryLoading, getDictionary, searchQuery, searchResults, showSearchResults } from '$lib/stores';
 
-	let { children } = $props();
+  let { children } = $props();
 
   // Load dictionary on component mount
   onMount(async () => {
@@ -23,8 +23,8 @@
 </script>
 
 <svelte:head>
-    <title>ChineseDict</title>
-    <meta name="description" content="Chinese-English Dictionary" />
+  <title>ChineseDict</title>
+  <meta name="description" content="Chinese-English Dictionary" />
 </svelte:head>
 
 <div class="min-h-screen flex flex-col">
@@ -38,14 +38,11 @@
     </main>
   </div>
 
-  <footer class="text-xs text-gray-500 py-4 flex justify-between min-h-[5rem]">
-    <div>
-      Data via <a href="/about">CC-EDICT and others</a>.<br/>
-      Provide feedback <a href="https://github.com/jeffcarp/chinesedict/issues/new">here</a>.<br/>
-    </div>
-    <div>
-      Dictionary loaded: {!$dictionaryLoading}
-    </div>
+  <footer class="text-xs text-gray-500 py-4 min-h-[5rem]">
+    <p class="text-xs/5">
+      Data via <a href="/about" class="decoration-1 decoration-gray-500 underline-offset-2 underline decoration-dashed">CC-EDICT and others</a>.<br/>
+      Provide feedback <a href="https://github.com/jeffcarp/chinesedict/issues/new" class="decoration-1 decoration-gray-500 underline-offset-2 underline decoration-dashed">here</a>.
+    </p>
   </footer>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-VF4JJW0F68"></script>

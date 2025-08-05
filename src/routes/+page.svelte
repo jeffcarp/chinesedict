@@ -11,8 +11,8 @@
 <h4>Dictionary</h4>
 
 <p>
-    Words: <a href="/word/小狗">小狗</a>, <a href="/word/樱花">樱花</a> <br />
-    English words: <a href="/?q=news" data-sveltekit-reload>news</a>
+  Words: <a href="/word/小狗">小狗</a>, <a href="/word/樱花">樱花</a> <br />
+  English words: <a href="/?q=news" data-sveltekit-reload>news</a>
 </p>
 
 <h4>Segmentation</h4>
@@ -22,11 +22,11 @@
 <h4>Lists</h4>
 
 <p>
-<a href="/tag/HSK1">HSK1</a>,
-<a href="/tag/HSK2">HSK2</a>,
-<a href="/tag/HSK3">HSK3</a>,
-<a href="/tag/HSK4">HSK4</a>,
-<a href="/tag/HSK5">HSK5</a>,
-<a href="/tag/HSK6">HSK6</a>,
-<a href="/tag/chengyu">chengyu</a>
+  <a href="/tag/HSK1">HSK1</a>,
+  <a href="/tag/HSK2">HSK2</a>,
+  <a href="/tag/HSK3">HSK3</a>,
+  <a href="/tag/HSK4">HSK4</a>,
+  <a href="/tag/HSK5">HSK5</a>,
+  <a href="/tag/HSK6">HSK6</a>,
+  <a href="/tag/chengyu">chengyu</a>
 </p>
