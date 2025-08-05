@@ -1,6 +1,7 @@
 <script lang="ts">
-    /** @type {import('./$types').PageData} */
-    export let data;
+  /** @type {import('./$types').PageData} */
+  export let data;
+  export const prerender = true;
 </script>
 
 <svelte:head>

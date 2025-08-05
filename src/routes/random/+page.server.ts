@@ -3,14 +3,14 @@ import type { PageServerLoad } from './$types';
 import { getDictionary } from '$lib/stores';
 
 export const load: PageServerLoad = async () => {
-    const dictionary = await getDictionary();
-    
-    if (dictionary.length === 0) {
-        throw new Error('Dictionary is empty');
-    }
+  const dictionary = await getDictionary();
 
-    const randomIndex = Math.floor(Math.random() * dictionary.length);
-    const randomWord = dictionary[randomIndex].simplified;
+  if (dictionary.length === 0) {
+      throw new Error('Dictionary is empty');
+  }
 
-    throw redirect(303, `/word/${randomWord}`);
+  const randomIndex = Math.floor(Math.random() * dictionary.length);
+  const randomWord = dictionary[randomIndex].simplified;
+
+  throw redirect(303, `/word/${randomWord}`);
 };
